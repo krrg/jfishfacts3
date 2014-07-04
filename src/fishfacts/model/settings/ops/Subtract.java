@@ -5,6 +5,17 @@ package fishfacts.model.settings.ops;
  */
 public class Subtract extends AbstractOperator<Integer>
 {
+    private static Subtract instance = null;
+
+    public static Subtract getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Subtract();
+        }
+        return instance;
+    }
+
     @Override
     public char getSymbol()
     {

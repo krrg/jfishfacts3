@@ -5,6 +5,22 @@ package fishfacts.model.settings.ops;
  */
 public class Divide extends AbstractOperator<Integer>
 {
+    private static Divide instance = null;
+
+    public static Divide getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Divide();
+        }
+        return instance;
+    }
+
+    private Divide()
+    {
+
+    }
+
     @Override
     public char getSymbol()
     {

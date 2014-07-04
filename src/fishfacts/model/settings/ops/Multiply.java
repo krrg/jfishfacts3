@@ -5,6 +5,22 @@ package fishfacts.model.settings.ops;
  */
 public class Multiply extends AbstractOperator<Integer>
 {
+    private static Multiply instance = null;
+
+    public static Multiply getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Multiply();
+        }
+        return instance;
+    }
+
+    private Multiply()
+    {
+
+    }
+
     @Override
     public char getSymbol()
     {

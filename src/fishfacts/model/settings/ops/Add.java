@@ -5,6 +5,22 @@ package fishfacts.model.settings.ops;
  */
 public class Add extends AbstractOperator<Integer>
 {
+    private static Add instance = null;
+
+    public static Add getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Add();
+        }
+        return instance;
+    }
+
+    private Add()
+    {
+
+    }
+
     @Override
     public char getSymbol()
     {

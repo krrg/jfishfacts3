@@ -8,11 +8,16 @@ import java.util.Set;
 /**
  * Created by krr428 on 7/3/14.
  */
-public interface IProblemSettings
+public interface IProblemSettings<T>
 {
-    public void setAllowedOperations(Collection<AbstractOperator> allowed);
+    public void setAllowedOperations(Collection<AbstractOperator<T>> allowed);
+
+    public void addAllowedOperation(AbstractOperator<T> allowed);
+
+    public void removeAllowedOperation(AbstractOperator<T> disallowed);
 
     public Set<AbstractOperator> getAllowedOperations();
 
-    public <T> Collection<T> getAllowedOperandsFor(AbstractOperator operator, int operandIndex);
+    public Collection<T> getAllowedOperandsFor(AbstractOperator<T> operator, int operandIndex);
+
 }

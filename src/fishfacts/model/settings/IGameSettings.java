@@ -3,7 +3,7 @@ package fishfacts.model.settings;
 /**
  * Created by krr428 on 7/3/14.
  */
-public interface IGameSettings extends IProblemSettings
+public interface IGameSettings<T> extends IProblemSettings<T>
 {
     public void setRepeatIncorrect(boolean repeat);
 
@@ -20,6 +20,4 @@ public interface IGameSettings extends IProblemSettings
     public void setCorrectPerFish(int correctPerFish);
 
     public int getCorrectPerFish();
-
-    public void copySettingsFrom(IGameSettings other);
 }
