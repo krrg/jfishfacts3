@@ -16,8 +16,10 @@ public interface IProblemSettings<T>
 
     public void removeAllowedOperation(AbstractOperator<T> disallowed);
 
-    public Set<AbstractOperator> getAllowedOperations();
+    public Set<AbstractOperator<T>> getAllowedOperations();
 
     public Collection<T> getAllowedOperandsFor(AbstractOperator<T> operator, int operandIndex);
+
+    public void setAllowedOperandsFor(AbstractOperator<T> operator, int operandIndex, Collection<T> allowedOperands);
 
 }

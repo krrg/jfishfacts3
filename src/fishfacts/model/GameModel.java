@@ -2,6 +2,7 @@ package fishfacts.model;
 
 import fishfacts.model.aqua.IAquarium;
 import fishfacts.model.settings.IGameSettings;
+import fishfacts.model.settings.SimpleGameSettings;
 
 /**
  * Created by krr428 on 7/4/14.
@@ -25,19 +26,20 @@ public class GameModel implements IGameModel
 
     private GameModel()
     {
-
+        this.settings = new SimpleGameSettings();
+        this.aquarium = null;
     }
 
 
     @Override
     public IGameSettings getSettings()
     {
-        return null;
+        return this.settings;
     }
 
     @Override
     public IAquarium getAquarium()
     {
-        return null;
+        return this.aquarium;
     }
 }

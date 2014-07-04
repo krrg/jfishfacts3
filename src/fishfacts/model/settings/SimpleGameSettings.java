@@ -2,10 +2,7 @@ package fishfacts.model.settings;
 
 import fishfacts.model.settings.ops.*;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by krr428 on 7/4/14.
@@ -16,7 +13,14 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     private int incorrectTimeout = 2750;
     private int tankCapacity = 6;
     private int correctPerFish = 2;
-    private Collection<AbstractOperator<Integer>> getAllowedOperators = null;
+    private Set<AbstractOperator<Integer>> allowedOperators = null;
+    private Map<AbstractOperator<Integer>, List<List<Integer>>> allowedOperands = null;
+
+    public SimpleGameSettings()
+    {
+        allowedOperators = new HashSet<>();
+        allowedOperands = new HashMap<>();
+    }
 
     @Override
     public void setRepeatIncorrect(boolean repeat)
@@ -69,30 +73,53 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     @Override
     public void setAllowedOperations(Collection<AbstractOperator<Integer>> allowed)
     {
-
+        allowedOperators.clear();
+        allowedOperators.addAll(allowed);
     }
 
     @Override
     public void addAllowedOperation(AbstractOperator<Integer> allowed)
     {
-
+        allowedOperators.add(allowed);
     }
 
     @Override
     public void removeAllowedOperation(AbstractOperator<Integer> disallowed)
     {
-
+        allowedOperators.remove(disallowed);
     }
 
     @Override
-    public Set<AbstractOperator> getAllowedOperations()
+    public Set<AbstractOperator<Integer>> getAllowedOperations()
     {
-        return null;
+        return Collections.unmodifiableSet(allowedOperators);
     }
 
     @Override
     public Collection<Integer> getAllowedOperandsFor(AbstractOperator<Integer> operator, int operandIndex)
     {
-        return null;
+        if (! allowedOperands.containsKey(operator))
+        {
+            return Collections.EMPTY_LIST;
+        }
+        else
+        {
+            return allowedOperands.get(operator).get(operandIndex);
+        }
+    }
+
+    @Override
+    public void setAllowedOperandsFor(AbstractOperator<Integer> operator, int operandIndex, Collection<Integer> allowed)
+    {
+        if (! this.allowedOperands.containsKey(operator))
+        {
+            allowedOperands.put(operator, new ArrayList<List<Integer>>());
+        }
+        if (null == this.allowedOperands.get(operator).get(operandIndex))
+        {
+            allowedOperands.get(operator).set(operandIndex, new ArrayList<Integer>());
+        }
+
+        allowedOperands.get(operator).get(operandIndex).addAll(allowed);
     }
 }
