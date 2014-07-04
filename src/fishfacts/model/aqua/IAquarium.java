@@ -19,8 +19,12 @@ public interface IAquarium
      * Defines the point at which for which, when new positions
      * @param pos
      */
-    public void setRightEdge(int pos);
+    public void setWidth(int pos);
 
-    public void setBottomEdge(int pos);
+    public void setHeight(int pos);
+
+    public int getWidth();
+
+    public int getHeight();
 
 }

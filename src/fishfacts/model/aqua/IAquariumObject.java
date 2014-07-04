@@ -1,6 +1,7 @@
 package fishfacts.model.aqua;
 
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -16,7 +17,9 @@ public interface IAquariumObject
 
     public double getWidth();
 
-    public Point2D calculateNewPosition(int ms);
+    public Rectangle2D getRectangle();
+
+    public void calculateNewPosition(int ms);
 
     public void handleAtEdge();
 
