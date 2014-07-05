@@ -12,5 +12,11 @@ public interface IGameModel
 
     public IAquarium getAquarium();
 
+    public GameState getCurrentState();
 
+    public void addGameStateListener(IGameStateListener listener);
+
+    public void removeGameStateListener(IGameStateListener listener);
+
+    public void requestStateChange(GameState newState);
 }
