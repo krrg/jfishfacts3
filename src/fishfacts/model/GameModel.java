@@ -20,9 +20,9 @@ public class GameModel implements IGameModel
         return instance;
     }
 
-
     private IGameSettings settings = null;
     private IAquarium aquarium = null;
+    private GameState currentState = GameState.START_SCREEN;
 
     private GameModel()
     {

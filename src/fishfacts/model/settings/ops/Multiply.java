@@ -7,6 +7,11 @@ public class Multiply extends AbstractOperator<Integer>
 {
     private static Multiply instance = null;
 
+    private Multiply()
+    {
+
+    }
+
     public static Multiply getInstance()
     {
         if (instance == null)
@@ -14,11 +19,6 @@ public class Multiply extends AbstractOperator<Integer>
             instance = new Multiply();
         }
         return instance;
-    }
-
-    private Multiply()
-    {
-
     }
 
     @Override
@@ -36,6 +36,6 @@ public class Multiply extends AbstractOperator<Integer>
     @Override
     public ProblemTuple createProblemFrom(Integer t1, Integer t2)
     {
-        return new ProblemTuple<>(t1, t2, t1 * t2);
+        return new ProblemTuple<>(t1, t2, t1 * t2, this);
     }
 }

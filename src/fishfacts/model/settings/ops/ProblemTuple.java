@@ -1,5 +1,6 @@
 package fishfacts.model.settings.ops;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,12 +9,13 @@ import java.util.List;
  */
 public class ProblemTuple<T>
 {
-    private List<T> operands;
-    private AbstractOperator operator;
+    private List<T> operands = null;
+    private AbstractOperator<T> operator = null;
 
-    public ProblemTuple(T a, T b, T c)
+    public ProblemTuple(T a, T b, T c, AbstractOperator<T> operator)
     {
-        operands.addAll(Arrays.asList(a, b, c));
+        this.operator = operator;
+        this.operands = Arrays.asList(a, b, c);
     }
 
     public T getOperandA()
@@ -30,6 +32,8 @@ public class ProblemTuple<T>
     {
         return operands.get(2);
     }
+
+    public AbstractOperator<T> getOperator() { return operator; }
 
     public boolean isCorrect(T answer)
     {

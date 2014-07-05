@@ -36,6 +36,6 @@ public class Divide extends AbstractOperator<Integer>
     @Override
     public ProblemTuple<Integer> createProblemFrom(Integer t1, Integer t2)
     {
-        return new ProblemTuple<>(t1 * t2, t1, t2);
+        return new ProblemTuple<>(t1 * t2, t1, t2, this);
     }
 }

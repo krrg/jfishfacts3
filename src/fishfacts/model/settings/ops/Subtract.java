@@ -31,6 +31,6 @@ public class Subtract extends AbstractOperator<Integer>
     @Override
     public ProblemTuple createProblemFrom(Integer t1, Integer t2)
     {
-        return new ProblemTuple<>(t2 + t1, t1, t2);
+        return new ProblemTuple<>(t2 + t1, t1, t2, this);
     }
 }

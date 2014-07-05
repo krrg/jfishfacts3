@@ -11,4 +11,6 @@ public interface IGameModel
     public IGameSettings getSettings();
 
     public IAquarium getAquarium();
+
+
 }
