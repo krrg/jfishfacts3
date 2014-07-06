@@ -6,7 +6,7 @@ import java.util.Collection;
 /**
  * Created by krr428 on 7/3/14.
  */
-public interface IAquarium
+public interface IAquarium extends Iterable<IAquariumObject>
 {
     public BufferedImage getTankImage();
 

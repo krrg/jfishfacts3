@@ -41,5 +41,6 @@ public class StartButtonController extends AbstractController implements IStartB
         }
 
         getModel().requestStateChange(GameState.PRE_START);
+        getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
     }
 }

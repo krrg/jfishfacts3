@@ -6,9 +6,7 @@ import fishfacts.model.aqua.IAquariumObject;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -111,5 +109,11 @@ public class Aquarium implements IAquarium
     public Collection<IAquariumObject> getTankContents()
     {
         return Collections.unmodifiableCollection(aquariumObjects);
+    }
+
+    @Override
+    public Iterator<IAquariumObject> iterator()
+    {
+        return getTankContents().iterator();
     }
 }
