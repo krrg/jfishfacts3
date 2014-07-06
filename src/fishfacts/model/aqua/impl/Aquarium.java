@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,14 +31,6 @@ public class Aquarium implements IAquarium
     {
         BufferedImage buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = buffer.createGraphics();
-
-        for (IAquariumObject obj: aquariumObjects)
-        {
-            int x = (int)obj.getX();
-            int y = (int)obj.getY();
-            g2d.drawImage(obj.getImage(), x, y, null);
-        }
-
         return buffer;
     }
 
@@ -113,4 +107,9 @@ public class Aquarium implements IAquarium
         return height;
     }
 
+    @Override
+    public Collection<IAquariumObject> getTankContents()
+    {
+        return Collections.unmodifiableCollection(aquariumObjects);
+    }
 }

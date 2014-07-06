@@ -6,6 +6,7 @@ import fishfacts.model.settings.SimpleGameSettings;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * Created by krr428 on 7/4/14.
@@ -27,12 +28,14 @@ public class GameModel implements IGameModel
     private IAquarium aquarium = null;
     private GameState currentState = GameState.START_SCREEN;
     private Set<IGameStateListener> stateListenerSet = null;
+    private Stack<GameState> stateChangeRequests = null;
 
     private GameModel()
     {
         this.settings = new SimpleGameSettings();
         this.aquarium = null;
         this.stateListenerSet = new HashSet<>();
+        this.stateChangeRequests = new Stack<>();
     }
 
 
@@ -68,6 +71,23 @@ public class GameModel implements IGameModel
 
     @Override
     public void requestStateChange(GameState newState)
+    {
+        stateChangeRequests.push(newState);
+
+        if (stateChangeRequests.size() == 1)
+        {
+            while (! stateChangeRequests.isEmpty())
+            {
+                GameState next = stateChangeRequests.pop();
+                if (next != currentState)
+                {
+                    fireStateChange(next);
+                }
+            }
+        }
+    }
+
+    private void fireStateChange(GameState newState)
     {
         this.currentState = newState;
         for (IGameStateListener listener: stateListenerSet)

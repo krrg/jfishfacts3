@@ -24,4 +24,5 @@ public interface IAquariumObject
     public void handleAtEdge();
 
     public BufferedImage getImage();
+
 }

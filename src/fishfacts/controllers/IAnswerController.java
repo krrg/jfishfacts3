@@ -5,11 +5,6 @@ package fishfacts.controllers;
  */
 public interface IAnswerController
 {
-    public String getTermA();
-
-    public String getTermB();
-
-    public String getOperator();
-
+    //When the user presses the [Enter] key in the input box.
     public void handleAnswer(String userAnswer);
 }

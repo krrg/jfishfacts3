@@ -1,6 +1,7 @@
 package fishfacts.model.aqua;
 
 import java.awt.image.BufferedImage;
+import java.util.Collection;
 
 /**
  * Created by krr428 on 7/3/14.
@@ -14,6 +15,8 @@ public interface IAquarium
     public void addObject(IAquariumObject object);
 
     public void clearAllObjects();
+
+    public Collection<IAquariumObject> getTankContents();
 
     /**
      * Defines the point at which for which, when new positions

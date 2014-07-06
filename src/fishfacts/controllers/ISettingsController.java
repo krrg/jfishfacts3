@@ -7,5 +7,5 @@ import fishfacts.model.settings.IGameSettings;
  */
 public interface ISettingsController
 {
-    public IGameSettings<Integer> getCurrentSettings();
+    public void handleSettingsChange(IGameSettings<Integer> newSettings);
 }
