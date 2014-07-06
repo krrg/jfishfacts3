@@ -8,7 +8,7 @@ import fishfacts.model.settings.IGameSettings;
  */
 public interface IGameModel
 {
-    public IGameSettings getSettings();
+    public IGameSettings<Integer> getSettings();
 
     public IAquarium getAquarium();
 
@@ -19,4 +19,6 @@ public interface IGameModel
     public void removeGameStateListener(IGameStateListener listener);
 
     public void requestStateChange(GameState newState);
+
+    public void setSettings(IGameSettings<Integer> settings);
 }

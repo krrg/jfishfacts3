@@ -1,6 +1,6 @@
 package fishfacts.model.settings;
 
-import fishfacts.model.settings.ops.AbstractOperator;
+import fishfacts.model.operations.AbstractOperator;
 
 import java.util.Collection;
 import java.util.Set;

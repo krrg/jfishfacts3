@@ -1,6 +1,6 @@
 package fishfacts.model.settings;
 
-import fishfacts.model.settings.ops.*;
+import fishfacts.model.operations.*;
 
 import java.util.*;
 
@@ -13,6 +13,7 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     private int incorrectTimeout = 2750;
     private int tankCapacity = 6;
     private int correctPerFish = 2;
+    private int totalGameTime = 0;
     private Set<AbstractOperator<Integer>> allowedOperators = null;
     private Map<AbstractOperator<Integer>, List<List<Integer>>> allowedOperands = null;
 
@@ -121,5 +122,17 @@ public class SimpleGameSettings implements IGameSettings<Integer>
         }
 
         allowedOperands.get(operator).get(operandIndex).addAll(allowed);
+    }
+
+    @Override
+    public void setTotalGameTime(int seconds)
+    {
+        this.totalGameTime = seconds;
+    }
+
+    @Override
+    public int getTotalGameTime()
+    {
+        return totalGameTime;
     }
 }

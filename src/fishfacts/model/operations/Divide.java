@@ -1,22 +1,22 @@
-package fishfacts.model.settings.ops;
+package fishfacts.model.operations;
 
 /**
  * Created by krr428 on 7/3/14.
  */
-public class Add extends AbstractOperator<Integer>
+public class Divide extends AbstractOperator<Integer>
 {
-    private static Add instance = null;
+    private static Divide instance = null;
 
-    public static Add getInstance()
+    public static Divide getInstance()
     {
         if (instance == null)
         {
-            instance = new Add();
+            instance = new Divide();
         }
         return instance;
     }
 
-    private Add()
+    private Divide()
     {
 
     }
@@ -24,18 +24,18 @@ public class Add extends AbstractOperator<Integer>
     @Override
     public char getSymbol()
     {
-        return '+';
+        return '/';
     }
 
     @Override
     public String getName()
     {
-        return "Add";
+        return "Divide";
     }
 
     @Override
     public ProblemTuple<Integer> createProblemFrom(Integer t1, Integer t2)
     {
-        return new ProblemTuple<>(t1, t2, t1 + t2, this);
+        return new ProblemTuple<>(t1 * t2, t1, t2, this);
     }
 }

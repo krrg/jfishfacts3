@@ -1,7 +1,7 @@
 package fishfacts.tests;
 
 import fishfacts.model.settings.IProblemSettings;
-import fishfacts.model.settings.ops.*;
+import fishfacts.model.operations.*;
 import org.junit.Assert;
 import org.junit.Test;
 

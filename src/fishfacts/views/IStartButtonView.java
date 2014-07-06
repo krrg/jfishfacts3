@@ -7,5 +7,7 @@ import java.awt.event.ActionListener;
  */
 public interface IStartButtonView
 {
+    public void enableStartButton();
 
+    public void disableStartButton();
 }

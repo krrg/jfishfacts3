@@ -1,4 +1,4 @@
-package fishfacts.model.settings.ops;
+package fishfacts.model.operations;
 
 /**
  * Created by krr428 on 7/3/14.

@@ -1,6 +1,5 @@
-package fishfacts.model.settings.ops;
+package fishfacts.model.operations;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

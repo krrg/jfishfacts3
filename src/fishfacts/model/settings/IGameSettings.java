@@ -13,6 +13,10 @@ public interface IGameSettings<T> extends IProblemSettings<T>
 
     public int getIncorrectTimeout();
 
+    public void setTotalGameTime(int seconds);
+
+    public int getTotalGameTime();
+
     public void setTankCapacity(int capacity);
 
     public int getTankCapacity();

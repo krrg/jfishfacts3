@@ -12,5 +12,4 @@ public interface IAquariumView
 
     public void requestRedraw();
 
-    public Rectangle2D getBounds();
 }

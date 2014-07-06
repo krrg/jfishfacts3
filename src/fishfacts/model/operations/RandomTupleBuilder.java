@@ -1,4 +1,4 @@
-package fishfacts.model.settings.ops;
+package fishfacts.model.operations;
 
 import fishfacts.model.settings.IProblemSettings;
 
@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * Created by krr428 on 7/3/14.
  */
-public class RandomTupleBuilder<T>
+public class RandomTupleBuilder
 {
     private static RandomTupleBuilder instance = null;
     private static Random rand = new Random();
@@ -26,25 +26,25 @@ public class RandomTupleBuilder<T>
 
     }
 
-    public <T> ProblemTuple<T> generateProblem(IProblemSettings problemSettings)
+    public ProblemTuple<Integer> generateProblem(IProblemSettings problemSettings)
     {
         AbstractOperator operator = getRandomOperation(problemSettings);
-        List<T> operators = getRandomOperands(problemSettings, operator);
+        List<Integer> operators = getRandomOperands(problemSettings, operator);
 
         return operator.createProblemFrom(operators.get(0), operators.get(1));
     }
 
-    private AbstractOperator getRandomOperation(IProblemSettings problemSettings)
+    private AbstractOperator getRandomOperation(IProblemSettings<Integer> problemSettings)
     {
-        List<AbstractOperator> operators = new ArrayList<>(problemSettings.getAllowedOperations());
+        List<AbstractOperator<Integer>> operators = new ArrayList<>(problemSettings.getAllowedOperations());
         Collections.shuffle(operators);
         return operators.get(0);
     }
 
-    private <T> List<T> getRandomOperands(IProblemSettings settings, AbstractOperator operator)
+    private List<Integer> getRandomOperands(IProblemSettings<Integer> settings, AbstractOperator operator)
     {
-        List<T> allowedLeft = new ArrayList<>(settings.<T>getAllowedOperandsFor(operator, 0));
-        List<T> allowedRight = new ArrayList<>(settings.<T>getAllowedOperandsFor(operator, 1));
+        List<Integer> allowedLeft = new ArrayList<>(settings.getAllowedOperandsFor(operator, 0));
+        List<Integer> allowedRight = new ArrayList<>(settings.getAllowedOperandsFor(operator, 1));
 
         Collections.shuffle(allowedLeft);
         Collections.shuffle(allowedRight);

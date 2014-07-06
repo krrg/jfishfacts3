@@ -14,4 +14,8 @@ public interface IAnswerView
     public void setOperator(String operator);
 
     public void focusAnswerField();
+
+    public void freezeView();
+
+    public void unfreezeView();
 }
