@@ -9,12 +9,13 @@ import fishfacts.model.aqua.IAquarium;
 import fishfacts.model.aqua.IAquariumObject;
 import fishfacts.model.aqua.impl.Aquarium;
 import fishfacts.model.aqua.impl.Bubble;
+import fishfacts.views.IAquariumView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.Dimension2D;
+import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -29,9 +30,11 @@ public class AquariumController extends AbstractController implements IAquariumC
     private Map<GameState, IGameStateListener> stateHandlers = null;
     private Timer swimClock = null;
     private Timer newBubbleClock = null;
-    final int NEW_BUBBLES = 10;
+    private Timer redrawClock = null;
+    private IAquariumView view = null;
+    private final int NEW_BUBBLES = 10;
 
-    public AquariumController(IGameModel model)
+    public AquariumController(IGameModel model, IAquariumView view)
     {
         super(model);
         this.fishAquarium = getModel().getAquarium();
@@ -41,11 +44,14 @@ public class AquariumController extends AbstractController implements IAquariumC
         initStateHandlers();
         initSwimClock();
         initNewBubbleClock();
+        initRedrawClock();
     }
 
     private void initStateHandlers()
     {
+        //TODO: Finish this section
         stateHandlers.put(GameState.PRE_START, null);
+        stateHandlers.put(GameState.ACTIVE_GAME_CORRECT_ANSWER, new CorrectAnswerHandler());
     }
 
     //The swim clock moves the fish and the bubbles every 25ms.
@@ -62,6 +68,13 @@ public class AquariumController extends AbstractController implements IAquariumC
         newBubbleClock = new Timer(500, null);
         newBubbleClock.addActionListener(new NewBubbleHandler());
         newBubbleClock.start();
+    }
+
+    private void initRedrawClock()
+    {
+        redrawClock = new Timer(25, null);
+        redrawClock.addActionListener(new RedrawHandler());
+        redrawClock.start();
     }
 
     @Override
@@ -85,6 +98,40 @@ public class AquariumController extends AbstractController implements IAquariumC
         }
     }
 
+    private class RedrawHandler implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent actionEvent)
+        {
+            view.updateBuffer(drawBuffer());
+            view.requestRedraw();
+        }
+
+        private BufferedImage drawBuffer()
+        {
+            int width = bubbleAquarium.getWidth();
+            int height = bubbleAquarium.getHeight();
+
+            BufferedImage buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = buffer.createGraphics();
+
+            drawAquarium(g2d, fishAquarium);
+            drawAquarium(g2d, bubbleAquarium);
+
+            return buffer;
+        }
+
+        private void drawAquarium(Graphics2D g2d, IAquarium aqua)
+        {
+            g2d.drawImage(aqua.getBackdrop(), 0, 0, null);
+            for (IAquariumObject obj: aqua)
+            {
+                g2d.drawImage(obj.getImage(), (int)obj.getX(), (int)obj.getY(), null);
+            }
+        }
+
+
+    }
 
     private class NewBubbleHandler implements ActionListener
     {
@@ -109,7 +156,7 @@ public class AquariumController extends AbstractController implements IAquariumC
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
-            System.out.println("New bubbles on their way...");
+            addMoreBubbles();
         }
     }
 
@@ -130,6 +177,39 @@ public class AquariumController extends AbstractController implements IAquariumC
             }
 
             //Do not redraw here.
+        }
+    }
+
+    private class CorrectAnswerHandler implements IGameStateListener
+    {
+        private int correctAnswers = 0;
+
+        @Override
+        public void stateChanged(GameState newState)
+        {
+            correctAnswers += 1;
+
+            if (correctAnswers >= getCorrectAnswersPerFish())
+            {
+                correctAnswers = 0;
+                addFish();
+            }
+        }
+
+        private void addFish()
+        {
+            fishAquarium.addObject(createRandomFish());
+        }
+
+        private IAquariumObject createRandomFish()
+        {
+            //TODO: Implement creating random fish.
+            throw new UnsupportedOperationException("Creating random fish not implemented");
+        }
+
+        private int getCorrectAnswersPerFish()
+        {
+            return getModel().getSettings().getCorrectPerFish();
         }
     }
 

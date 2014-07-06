@@ -8,7 +8,7 @@ import java.util.Collection;
  */
 public interface IAquarium extends Iterable<IAquariumObject>
 {
-    public BufferedImage getTankImage();
+    public BufferedImage getBackdrop();
 
     public void calculateNewPositions(int ms);
 

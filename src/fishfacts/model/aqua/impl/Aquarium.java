@@ -17,18 +17,30 @@ public class Aquarium implements IAquarium
     private int width;
     private int height;
     private List<IAquariumObject> aquariumObjects = null;
+    private BufferedImage backdrop = null;
 
     public Aquarium(int width, int height)
+    {
+        this(width, height, null);
+    }
+
+    public Aquarium(int width, int height, BufferedImage backdrop)
     {
         this.width = width;
         this.height = height;
     }
 
     @Override
-    public BufferedImage getTankImage()
+    public BufferedImage getBackdrop()
     {
         BufferedImage buffer = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2d = buffer.createGraphics();
+
+        if (backdrop != null)
+        {
+            g2d.drawImage(backdrop, 0, 0, null);
+        }
+
         return buffer;
     }
 
