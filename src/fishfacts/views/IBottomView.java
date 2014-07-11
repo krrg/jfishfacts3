@@ -8,4 +8,5 @@ public interface IBottomView
     public void showAnswerView();
 
     public void showStartView();
+
 }

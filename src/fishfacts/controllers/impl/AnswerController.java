@@ -28,6 +28,7 @@ public class AnswerController extends AbstractController implements IAnswerContr
     {
         super(model);
         this.view = view;
+        this.view.setAnswerController(this);
     }
 
     @Override

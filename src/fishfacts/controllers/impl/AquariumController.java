@@ -9,6 +9,7 @@ import fishfacts.model.aqua.IAquarium;
 import fishfacts.model.aqua.IAquariumObject;
 import fishfacts.model.aqua.impl.Aquarium;
 import fishfacts.model.aqua.impl.Bubble;
+import fishfacts.model.aqua.impl.FishBuilder;
 import fishfacts.views.IAquariumView;
 
 import javax.swing.*;
@@ -41,10 +42,14 @@ public class AquariumController extends AbstractController implements IAquariumC
         this.bubbleAquarium = new Aquarium(fishAquarium.getWidth(), fishAquarium.getHeight());
         this.stateHandlers = new HashMap<>();
 
+        this.view = view;
+        this.view.setAquariumController(this);
+
         initStateHandlers();
         initSwimClock();
         initNewBubbleClock();
         initRedrawClock();
+
     }
 
     private void initStateHandlers()
@@ -203,8 +208,8 @@ public class AquariumController extends AbstractController implements IAquariumC
 
         private IAquariumObject createRandomFish()
         {
-            //TODO: Implement creating random fish.
-            throw new UnsupportedOperationException("Creating random fish not implemented");
+            return FishBuilder.getInstance()
+                    .createRandomFish(fishAquarium.getWidth(), fishAquarium.getHeight());
         }
 
         private int getCorrectAnswersPerFish()

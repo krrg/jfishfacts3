@@ -1,5 +1,7 @@
 package fishfacts.views;
 
+import fishfacts.controllers.impl.AquariumController;
+
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
@@ -12,4 +14,5 @@ public interface IAquariumView
 
     public void requestRedraw();
 
+    public void setAquariumController(AquariumController controller);
 }
