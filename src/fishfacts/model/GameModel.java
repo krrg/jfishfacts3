@@ -95,4 +95,10 @@ public class GameModel implements IGameModel
             listener.stateChanged(currentState);
         }
     }
+
+    @Override
+    public void setSettings(IGameSettings<Integer> settings)
+    {
+        this.settings = settings;
+    }
 }

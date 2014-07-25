@@ -42,6 +42,6 @@ public class Main
         ISettingsController settingsController = new SettingsController(model);
         IStartButtonController startButtonController = new StartButtonController(model, startButtonView);
 
-
+        return null;
     }
 }
