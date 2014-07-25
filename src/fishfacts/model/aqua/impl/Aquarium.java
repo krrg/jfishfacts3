@@ -28,6 +28,8 @@ public class Aquarium implements IAquarium
     {
         this.width = width;
         this.height = height;
+        this.backdrop = backdrop;
+        this.aquariumObjects = new ArrayList<>();
     }
 
     @Override

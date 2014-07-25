@@ -1,6 +1,7 @@
 package fishfacts.model;
 
 import fishfacts.model.aqua.IAquarium;
+import fishfacts.model.aqua.impl.Aquarium;
 import fishfacts.model.settings.IGameSettings;
 import fishfacts.model.settings.SimpleGameSettings;
 
@@ -33,7 +34,7 @@ public class GameModel implements IGameModel
     private GameModel()
     {
         this.settings = new SimpleGameSettings();
-        this.aquarium = null;
+        this.aquarium = new Aquarium(640, 480);
         this.stateListenerSet = new HashSet<>();
         this.stateChangeRequests = new Stack<>();
     }

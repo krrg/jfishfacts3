@@ -13,6 +13,8 @@ public interface IAnswerView
 
     public void setTermB(String termB);
 
+    public void setAnswerText(String answerText);
+
     public void setOperator(String operator);
 
     public void focusAnswerField();
