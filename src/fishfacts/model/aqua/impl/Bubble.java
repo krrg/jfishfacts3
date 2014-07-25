@@ -39,7 +39,8 @@ public class Bubble extends AbstractAquariumObject
     @Override
     public void calculateNewPosition(int ms)
     {
-        this.setY(getY() - (speed * ms));
+        final double SPEED_COEFFICIENT = 0.125;
+        this.setY(getY() - (speed * ms * SPEED_COEFFICIENT));
     }
 
     @Override

@@ -33,7 +33,7 @@ public class AquariumController extends AbstractController implements IAquariumC
     private Timer newBubbleClock = null;
     private Timer redrawClock = null;
     private IAquariumView view = null;
-    private final int NEW_BUBBLES = 10;
+    private final int NEW_BUBBLES = 3;
 
     public AquariumController(IGameModel model, IAquariumView view)
     {
@@ -108,6 +108,7 @@ public class AquariumController extends AbstractController implements IAquariumC
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
+            System.out.println("About to draw " + bubbleAquarium.getTankContents().size() + " bubbles.");
             view.updateBuffer(drawBuffer());
             view.requestRedraw();
         }
@@ -146,7 +147,7 @@ public class AquariumController extends AbstractController implements IAquariumC
         {
             int x = rand.nextInt(bubbleAquarium.getWidth());
             int y = bubbleAquarium.getHeight();
-            double scaling = rand.nextDouble();
+            double scaling = rand.nextDouble() + 0.1; //This is so the height and width are rounded correctly.
             return new Bubble(x, y, scaling, 1.0 / scaling);
         }
 
@@ -171,15 +172,18 @@ public class AquariumController extends AbstractController implements IAquariumC
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
-            for (IAquariumObject obj: fishAquarium)
-            {
-                obj.calculateNewPosition(swimClock.getDelay());
-            }
+//            for (IAquariumObject obj: fishAquarium)
+//            {
+//                obj.calculateNewPosition(swimClock.getDelay());
+//            }
+//
+//            for (IAquariumObject obj: bubbleAquarium)
+//            {
+//                obj.calculateNewPosition(swimClock.getDelay());
+//            }
 
-            for (IAquariumObject obj: bubbleAquarium)
-            {
-                obj.calculateNewPosition(swimClock.getDelay());
-            }
+            fishAquarium.calculateNewPositions(swimClock.getDelay());
+            bubbleAquarium.calculateNewPositions(swimClock.getDelay());
 
             //Do not redraw here.
         }

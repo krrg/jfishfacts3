@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6782636-a354-4232-8606-074bdfed871a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/views/impl/AnswerView.java" afterPath="$PROJECT_DIR$/src/fishfacts/views/impl/AnswerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Aquarium.java" afterPath="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Aquarium.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/model/GameModel.java" afterPath="$PROJECT_DIR$/src/fishfacts/model/GameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/views/IAnswerView.java" afterPath="$PROJECT_DIR$/src/fishfacts/views/IAnswerView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java" afterPath="$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/Main.java" afterPath="$PROJECT_DIR$/src/fishfacts/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java" afterPath="$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java" afterPath="$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java" afterPath="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="jfishfacts3.iws" />
@@ -37,41 +33,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="AquariumController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="AquariumController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3066884" vertical-offset="1345" max-vertical-offset="3383">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2902" max-vertical-offset="3502">
+              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+              <folding>
+                <element signature="e#4982#4983#0" expanded="true" />
+                <element signature="e#5022#5023#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Timer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///usr/java/latest/src.zip!/javax/swing/Timer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4478" max-vertical-offset="9860">
+              <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IAnswerView.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fishfacts/views/IAnswerView.java">
+      <file leaf-file-name="Bubble.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="561">
-              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestFish.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/TestFish.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="595">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FishBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/FishBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="867">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="969">
+              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -107,24 +96,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AquariumView.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="AquariumView.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1105">
-              <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
+            <state vertical-scroll-proportion="1.1854304" vertical-offset="220" max-vertical-offset="1224">
+              <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#599#882#0" expanded="true" />
                 <element signature="e#871#872#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#1003#1004#0" expanded="true" />
-                <element signature="e#1079#1080#0" expanded="true" />
-                <element signature="e#1115#1116#0" expanded="true" />
-                <element signature="e#1168#1169#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
-                <element signature="e#1289#1290#0" expanded="true" />
-                <element signature="e#1333#1334#0" expanded="true" />
+                <element signature="e#1204#1205#0" expanded="true" />
+                <element signature="e#1244#1245#0" expanded="true" />
+                <element signature="e#1297#1298#0" expanded="true" />
+                <element signature="e#1327#1328#0" expanded="true" />
+                <element signature="e#1418#1419#0" expanded="true" />
+                <element signature="e#1462#1463#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BufferedImage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar:///usr/java/latest/src.zip!/java/awt/image/BufferedImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4933" max-vertical-offset="26214">
+              <caret line="339" column="0" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -152,11 +149,15 @@
       <file leaf-file-name="Aquarium.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Aquarium.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="1785">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1887">
+              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
               <folding>
                 <element signature="e#536#537#0" expanded="true" />
                 <element signature="e#577#578#0" expanded="true" />
+                <element signature="e#1176#1177#0" expanded="true" />
+                <element signature="e#1242#1243#0" expanded="true" />
+                <element signature="e#1574#1575#0" expanded="true" />
+                <element signature="e#1647#1648#0" expanded="true" />
                 <element signature="e#2794#2795#0" expanded="true" />
                 <element signature="e#2868#2869#0" expanded="true" />
               </folding>
@@ -179,7 +180,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/fishfacts/model/settings/ops/Operator.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/settings/ops/AbstractOperator.java" />
-        <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/AbstractAquariumObject.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/settings/GameSettings.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/settings/IProblemSettings.java" />
@@ -218,16 +218,17 @@
         <option value="$PROJECT_DIR$/src/fishfacts/controllers/impl/StartButtonController.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/controllers/IAquariumController.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/IAquarium.java" />
-        <option value="$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/TestFish.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/FishBuilder.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/views/IAnswerView.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/views/impl/AnswerView.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java" />
-        <option value="$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/Main.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/GameModel.java" />
+        <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java" />
+        <option value="$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java" />
         <option value="$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Aquarium.java" />
+        <option value="$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java" />
       </list>
     </option>
   </component>
@@ -366,7 +367,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,7 +389,37 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aqua" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfishfacts3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jfishfacts3" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fishfacts" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="aqua" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -483,7 +514,13 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="jfishfacts3" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -678,9 +715,9 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32603687" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3247734" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39879155" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884398" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831326" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -691,7 +728,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23990306" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46978852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46978852" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="98" y="97" width="1084" height="580" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -718,7 +755,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -726,30 +766,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3638" max-vertical-offset="3859">
-          <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/AbstractAquariumObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="1751">
-          <caret line="78" column="5" selection-start-line="78" selection-start-column="5" selection-end-line="78" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="986">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/TestFish.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="595">
@@ -780,6 +796,10 @@
           <folding>
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
             <element signature="e#2794#2795#0" expanded="true" />
             <element signature="e#2868#2869#0" expanded="true" />
           </folding>
@@ -808,6 +828,10 @@
           <folding>
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
             <element signature="e#2794#2795#0" expanded="true" />
             <element signature="e#2868#2869#0" expanded="true" />
           </folding>
@@ -836,6 +860,10 @@
           <folding>
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
             <element signature="e#2794#2795#0" expanded="true" />
             <element signature="e#2868#2869#0" expanded="true" />
           </folding>
@@ -864,6 +892,10 @@
           <folding>
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
             <element signature="e#2794#2795#0" expanded="true" />
             <element signature="e#2868#2869#0" expanded="true" />
           </folding>
@@ -1036,14 +1068,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <caret line="41" column="41" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/TestFish.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
@@ -1068,6 +1092,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/java/latest/src.zip!/java/awt/event/ActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7366667" vertical-offset="0" max-vertical-offset="600">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/latest/src.zip!/javax/swing/Timer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4478" max-vertical-offset="9860">
+          <caret line="311" column="0" selection-start-line="311" selection-start-column="0" selection-end-line="311" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/java/latest/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4933" max-vertical-offset="26214">
+          <caret line="339" column="0" selection-start-line="339" selection-start-column="0" selection-end-line="339" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Bubble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="969">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fishfacts/views/impl/AnswerView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1240" max-vertical-offset="2312">
@@ -1082,34 +1146,6 @@
             <element signature="e#3010#3011#0" expanded="true" />
             <element signature="e#3097#3098#0" expanded="true" />
             <element signature="e#3141#3142#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/views/IAquariumView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="186" max-vertical-offset="1105">
-          <caret line="38" column="40" selection-start-line="38" selection-start-column="40" selection-end-line="38" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#599#882#0" expanded="true" />
-            <element signature="e#871#872#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1079#1080#0" expanded="true" />
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1289#1290#0" expanded="true" />
-            <element signature="e#1333#1334#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1130,24 +1166,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2902" max-vertical-offset="3502">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="e#4982#4983#0" expanded="true" />
+            <element signature="e#5022#5023#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fishfacts/model/aqua/impl/Aquarium.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="1785">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="1887">
+          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
           <folding>
             <element signature="e#536#537#0" expanded="true" />
             <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1242#1243#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
             <element signature="e#2794#2795#0" expanded="true" />
             <element signature="e#2868#2869#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fishfacts/controllers/impl/AquariumController.java">
+    <entry file="file://$PROJECT_DIR$/src/fishfacts/views/impl/AquariumView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3066884" vertical-offset="1345" max-vertical-offset="3383">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="1.1854304" vertical-offset="220" max-vertical-offset="1224">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#599#882#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1297#1298#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="true" />
+            <element signature="e#1418#1419#0" expanded="true" />
+            <element signature="e#1462#1463#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

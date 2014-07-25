@@ -31,18 +31,25 @@ public class AquariumView extends JPanel implements IAquariumView
                 }
             }
         });
+
+        this.setDoubleBuffered(true);
     }
 
     @Override
     protected void paintComponent(Graphics g)
     {
-        g.drawImage(buffer, 0, 0, this);
+        super.paintComponent(g);
+        if (buffer != null)
+        {
+            g.drawImage(buffer, 0, 0, this);
+        }
+
     }
 
     @Override
     public void updateBuffer(BufferedImage additional)
     {
-        this.buffer = buffer;
+        this.buffer = additional;
     }
 
     @Override
