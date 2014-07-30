@@ -5,6 +5,9 @@ import fishfacts.model.aqua.impl.Aquarium;
 import fishfacts.model.settings.IGameSettings;
 import fishfacts.model.settings.SimpleGameSettings;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
@@ -34,9 +37,22 @@ public class GameModel implements IGameModel
     private GameModel()
     {
         this.settings = new SimpleGameSettings();
-        this.aquarium = new Aquarium(640, 480);
+        this.aquarium = new Aquarium(640, 480, initAquariumBackground());
         this.stateListenerSet = new HashSet<>();
         this.stateChangeRequests = new Stack<>();
+    }
+
+    private BufferedImage initAquariumBackground()
+    {
+        try
+        {
+            return ImageIO.read(Aquarium.class.getResource("res/aquabg.jpg"));
+        }
+        catch (IOException e)
+        {
+            System.out.println("Unable to load aquarium backdrop!\n" + e);
+            return null;
+        }
     }
 
 

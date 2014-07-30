@@ -67,17 +67,17 @@ public class AquariumController extends AbstractController implements IAquariumC
         swimClock.start();
     }
 
-    //The bubble clock creates 10 new bubbles every 500ms
+    //The bubble clock creates X new bubbles every Yms
     private void initNewBubbleClock()
     {
-        newBubbleClock = new Timer(500, null);
+        newBubbleClock = new Timer(1000, null);
         newBubbleClock.addActionListener(new NewBubbleHandler());
         newBubbleClock.start();
     }
 
     private void initRedrawClock()
     {
-        redrawClock = new Timer(25, null);
+        redrawClock = new Timer(33, null);
         redrawClock.addActionListener(new RedrawHandler());
         redrawClock.start();
     }

@@ -40,7 +40,7 @@ public class Aquarium implements IAquarium
 
         if (backdrop != null)
         {
-            g2d.drawImage(backdrop, 0, 0, null);
+            g2d.drawImage(backdrop, 0, 0, this.getWidth(), this.getHeight(), null);
         }
 
         return buffer;
