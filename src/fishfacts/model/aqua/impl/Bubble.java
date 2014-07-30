@@ -15,6 +15,7 @@ public class Bubble extends AbstractAquariumObject
     public Bubble(double x, double y, double scaling, double speed)
     {
         super(x, y, scaling, null);
+        this.speed = speed;
         initBubbleImage();
         super.setImage(scaling, bubbleFullRes);
     }

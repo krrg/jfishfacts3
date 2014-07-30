@@ -108,7 +108,6 @@ public class AquariumController extends AbstractController implements IAquariumC
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
-            System.out.println("About to draw " + bubbleAquarium.getTankContents().size() + " bubbles.");
             view.updateBuffer(drawBuffer());
             view.requestRedraw();
         }
@@ -147,8 +146,9 @@ public class AquariumController extends AbstractController implements IAquariumC
         {
             int x = rand.nextInt(bubbleAquarium.getWidth());
             int y = bubbleAquarium.getHeight();
-            double scaling = rand.nextDouble() + 0.1; //This is so the height and width are rounded correctly.
-            return new Bubble(x, y, scaling, 1.0 / scaling);
+            double scaling = 0.5 * (rand.nextDouble() + 0.1); //This is so the height and width are rounded correctly.
+
+            return new Bubble(x, y, scaling, 1 - scaling);
         }
 
         private void addMoreBubbles()
