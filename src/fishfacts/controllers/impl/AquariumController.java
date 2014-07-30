@@ -43,7 +43,7 @@ public class AquariumController extends AbstractController implements IAquariumC
         this.stateHandlers = new HashMap<>();
 
         this.view = view;
-        this.view.setAquariumController(this);
+        this.view.setController(this);
 
         initStateHandlers();
         initSwimClock();

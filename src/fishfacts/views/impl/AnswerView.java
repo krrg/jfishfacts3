@@ -132,19 +132,19 @@ public class AnswerView extends JPanel implements IAnswerView
     }
 
     @Override
-    public void setAnswerController(IAnswerController controller)
+    public void setController(IAnswerController controller)
     {
         this.controller = controller;
     }
 
-    public static void main(String[] args)
-    {
-        JFrame jf = new JFrame();
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        jf.add(new AnswerView());
-
-        jf.pack();
-        jf.setVisible(true);
-    }
+//    public static void main(String[] args)
+//    {
+//        JFrame jf = new JFrame();
+//        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        jf.add(new AnswerView());
+//
+//        jf.pack();
+//        jf.setVisible(true);
+//    }
 }

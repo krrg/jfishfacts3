@@ -5,7 +5,7 @@ import fishfacts.controllers.IAnswerController;
 /**
  * Created by krr428 on 7/5/14.
  */
-public interface IAnswerView
+public interface IAnswerView extends IView<IAnswerController>
 {
     public void clearFields();
 
@@ -23,5 +23,4 @@ public interface IAnswerView
 
     public void unfreezeView();
 
-    public void setAnswerController(IAnswerController controller);
 }

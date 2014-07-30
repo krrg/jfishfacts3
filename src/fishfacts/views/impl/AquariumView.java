@@ -59,7 +59,7 @@ public class AquariumView extends JPanel implements IAquariumView
     }
 
     @Override
-    public void setAquariumController(IAquariumController controller)
+    public void setController(IAquariumController controller)
     {
         this.controller = controller;
     }

@@ -15,6 +15,8 @@ import fishfacts.model.aqua.impl.Bubble;
 import fishfacts.views.*;
 import fishfacts.views.impl.AnswerView;
 import fishfacts.views.impl.AquariumView;
+import fishfacts.views.impl.BottomView;
+import fishfacts.views.impl.StartButtonView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +33,7 @@ public class Main
 
         jf.add(createMainView());
 
-        jf.pack();
+        jf.setSize(640, 480);
         jf.setVisible(true);
     }
 
@@ -53,16 +55,20 @@ public class Main
 //        return null;
 
         AnswerView answerView = new AnswerView();
+        StartButtonView startButtonView = new StartButtonView();
+        BottomView bottomView = new BottomView(startButtonView, answerView);
         AquariumView aquariumView = new AquariumView();
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
         mainPanel.add(aquariumView, BorderLayout.CENTER);
-        mainPanel.add(answerView, BorderLayout.SOUTH);
+        mainPanel.add(bottomView, BorderLayout.SOUTH);
 
-        answerView.setAnswerController(new AnswerController(GameModel.getInstance(), answerView));
-        aquariumView.setAquariumController(new AquariumController(GameModel.getInstance(), aquariumView));
+        answerView.setController(new AnswerController(GameModel.getInstance(), answerView));
+        startButtonView.setController(new StartButtonController(GameModel.getInstance(), startButtonView));
+        aquariumView.setController(new AquariumController(GameModel.getInstance(), aquariumView));
+
 
         return mainPanel;
     }

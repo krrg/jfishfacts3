@@ -16,9 +16,9 @@ public class StartButtonView extends JPanel implements IStartButtonView
     private JButton btnStart = null;
     private IStartButtonController controller = null;
 
-    public StartButtonView(IStartButtonController controller)
+    public StartButtonView()
     {
-        this.controller = controller;
+        initComponents();
     }
 
     private void initComponents()
@@ -34,7 +34,10 @@ public class StartButtonView extends JPanel implements IStartButtonView
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                controller.handleGameStart();
+                if (controller != null)
+                {
+                    controller.handleGameStart();
+                }
             }
         });
     }
@@ -49,5 +52,11 @@ public class StartButtonView extends JPanel implements IStartButtonView
     public void disableStartButton()
     {
         btnStart.setEnabled(false);
+    }
+
+    @Override
+    public void setController(IStartButtonController controller)
+    {
+        this.controller = controller;
     }
 }

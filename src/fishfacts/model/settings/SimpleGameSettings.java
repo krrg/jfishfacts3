@@ -21,6 +21,18 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     {
         allowedOperators = new HashSet<>();
         allowedOperands = new HashMap<>();
+
+        initSimpleDefaults();
+    }
+
+    private void initSimpleDefaults()
+    {
+        this.addAllowedOperation(Add.getInstance());
+        this.addAllowedOperation(Multiply.getInstance());
+        this.setAllowedOperandsFor(Add.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Add.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Multiply.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Multiply.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
     }
 
     @Override
@@ -116,9 +128,9 @@ public class SimpleGameSettings implements IGameSettings<Integer>
         {
             allowedOperands.put(operator, new ArrayList<List<Integer>>());
         }
-        if (null == this.allowedOperands.get(operator).get(operandIndex))
+        if (this.allowedOperands.get(operator).size() >= operandIndex)
         {
-            allowedOperands.get(operator).set(operandIndex, new ArrayList<Integer>());
+            allowedOperands.get(operator).add(operandIndex, new ArrayList<Integer>());
         }
 
         allowedOperands.get(operator).get(operandIndex).addAll(allowed);
