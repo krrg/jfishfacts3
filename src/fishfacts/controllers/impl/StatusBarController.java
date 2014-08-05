@@ -4,6 +4,7 @@ import fishfacts.controllers.AbstractController;
 import fishfacts.model.GameState;
 import fishfacts.model.IGameModel;
 import fishfacts.model.IGameStateListener;
+import fishfacts.model.aqua.impl.TestFish;
 import fishfacts.views.IStatusView;
 
 import javax.swing.*;
@@ -47,7 +48,7 @@ public class StatusBarController extends AbstractController implements ActionLis
         stateHandlers.put(GameState.START_SCREEN, new InactiveStateHandler());
         stateHandlers.put(GameState.PRE_START, new AboutToBeginHandler());
         stateHandlers.put(GameState.ACTIVE_GAME_PENDING, active);
-        stateHandlers.put(GameState.ACTIVE_GAME_CORRECT_ANSWER, active);
+        stateHandlers.put(GameState.ACTIVE_GAME_CORRECT_ANSWER, new PostCorrectAnswerHandler());
         stateHandlers.put(GameState.ACTIVE_GAME_WRONG_ANSWER, active);
         stateHandlers.put(GameState.POST_ACTIVE_GAME, new PostActiveStateHandler());
     }
@@ -92,6 +93,19 @@ public class StatusBarController extends AbstractController implements ActionLis
         return getModel().getAquarium().getTankContents().size();
     }
 
+    private void refreshGameStats()
+    {
+        int totalTime = getTotalTime();
+        int fishCapacity = getFishCapacity();
+        int currentFish = getCurrentNumFish();
+
+        if (view != null)
+        {
+            view.setTime(remainingTime, totalTime);
+            view.setFish(currentFish, fishCapacity);
+        }
+    }
+
     private class InactiveStateHandler implements IGameStateListener
     {
         @Override
@@ -106,12 +120,21 @@ public class StatusBarController extends AbstractController implements ActionLis
         @Override
         public void stateChanged(GameState newState)
         {
-            int totalTime = getTotalTime();
-            int fishCapacity = getFishCapacity();
-            int currentFish = getCurrentNumFish();
+            refreshGameStats();
+        }
+    }
 
-            view.setTime(remainingTime, totalTime);
-            view.setFish(currentFish, fishCapacity);
+    private class PostCorrectAnswerHandler implements IGameStateListener
+    {
+        @Override
+        public void stateChanged(GameState newState) {
+
+
+            if (getCurrentNumFish() == getFishCapacity())
+            {
+                getModel().requestStateChange(GameState.POST_ACTIVE_GAME);
+            }
+            refreshGameStats();
         }
     }
 
