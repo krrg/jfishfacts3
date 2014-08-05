@@ -73,6 +73,8 @@ public class AnswerController extends AbstractController implements IAnswerContr
         if (newState == GameState.ACTIVE_GAME_PENDING)
         {
             generateNewProblem();
+            view.clearFields();
+            view.focusAnswerField();
             refreshView();
         }
         else if (newState == GameState.ACTIVE_GAME_WRONG_ANSWER)
@@ -92,6 +94,10 @@ public class AnswerController extends AbstractController implements IAnswerContr
 
             unfreezeTimer.setRepeats(false);
             unfreezeTimer.start();
+        }
+        else if (newState == GameState.ACTIVE_GAME_CORRECT_ANSWER)
+        {
+            getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
         }
     }
 

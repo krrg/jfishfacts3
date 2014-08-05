@@ -75,6 +75,7 @@ public class AnswerView extends JPanel implements IAnswerView
             {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER)
                 {
+                    System.out.println("Enter key pressed, handing off to controller.");
                     controller.handleAnswer(txtAnswer.getText());
                 }
             }
@@ -87,6 +88,7 @@ public class AnswerView extends JPanel implements IAnswerView
         lblFirstTerm.setText("");
         lblSecondTerm.setText("");
         lblOperator.setText("");
+        txtAnswer.setText("");
     }
 
     @Override
