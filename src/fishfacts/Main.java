@@ -4,10 +4,7 @@ import fishfacts.controllers.IAnswerController;
 import fishfacts.controllers.IAquariumController;
 import fishfacts.controllers.ISettingsController;
 import fishfacts.controllers.IStartButtonController;
-import fishfacts.controllers.impl.AnswerController;
-import fishfacts.controllers.impl.AquariumController;
-import fishfacts.controllers.impl.SettingsController;
-import fishfacts.controllers.impl.StartButtonController;
+import fishfacts.controllers.impl.*;
 import fishfacts.model.GameModel;
 import fishfacts.model.IGameModel;
 import fishfacts.model.aqua.impl.Aquarium;
@@ -68,6 +65,7 @@ public class Main
         answerView.setController(new AnswerController(GameModel.getInstance(), answerView));
         startButtonView.setController(new StartButtonController(GameModel.getInstance(), startButtonView));
         aquariumView.setController(new AquariumController(GameModel.getInstance(), aquariumView));
+        new BottomController(GameModel.getInstance(), bottomView);
 
 
         return mainPanel;
