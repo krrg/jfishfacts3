@@ -1,19 +1,8 @@
 package fishfacts;
 
-import fishfacts.controllers.IAnswerController;
-import fishfacts.controllers.IAquariumController;
-import fishfacts.controllers.ISettingsController;
-import fishfacts.controllers.IStartButtonController;
 import fishfacts.controllers.impl.*;
 import fishfacts.model.GameModel;
-import fishfacts.model.IGameModel;
-import fishfacts.model.aqua.impl.Aquarium;
-import fishfacts.model.aqua.impl.Bubble;
-import fishfacts.views.*;
-import fishfacts.views.impl.AnswerView;
-import fishfacts.views.impl.AquariumView;
-import fishfacts.views.impl.BottomView;
-import fishfacts.views.impl.StartButtonView;
+import fishfacts.views.impl.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,18 +44,20 @@ public class Main
         StartButtonView startButtonView = new StartButtonView();
         BottomView bottomView = new BottomView(startButtonView, answerView);
         AquariumView aquariumView = new AquariumView();
+        StatusView statusView = new StatusView();
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
         mainPanel.add(aquariumView, BorderLayout.CENTER);
         mainPanel.add(bottomView, BorderLayout.SOUTH);
+        mainPanel.add(statusView, BorderLayout.NORTH);
 
         answerView.setController(new AnswerController(GameModel.getInstance(), answerView));
         startButtonView.setController(new StartButtonController(GameModel.getInstance(), startButtonView));
         aquariumView.setController(new AquariumController(GameModel.getInstance(), aquariumView));
         new BottomController(GameModel.getInstance(), bottomView);
-
+        new StatusController(GameModel.getInstance(), statusView);
 
         return mainPanel;
     }

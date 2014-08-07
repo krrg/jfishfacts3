@@ -13,7 +13,7 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     private int incorrectTimeout = 2750;
     private int tankCapacity = 6;
     private int correctPerFish = 2;
-    private int totalGameTime = 0;
+    private int totalGameTime = 60;
     private Set<AbstractOperator<Integer>> allowedOperators = null;
     private Map<AbstractOperator<Integer>, List<List<Integer>>> allowedOperands = null;
 
@@ -33,6 +33,8 @@ public class SimpleGameSettings implements IGameSettings<Integer>
         this.setAllowedOperandsFor(Add.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         this.setAllowedOperandsFor(Multiply.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
         this.setAllowedOperandsFor(Multiply.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+
+        this.totalGameTime = 60;
     }
 
     @Override

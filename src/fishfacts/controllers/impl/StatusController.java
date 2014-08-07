@@ -16,14 +16,14 @@ import java.util.Map;
 /**
  * Created by krr428 on 7/5/14.
  */
-public class StatusBarController extends AbstractController implements ActionListener
+public class StatusController extends AbstractController implements ActionListener
 {
     private IStatusView view = null;
     private Timer gameClock = null;
     private int remainingTime = 0;
     private Map<GameState, IGameStateListener> stateHandlers = null;
 
-    public StatusBarController(IGameModel model, IStatusView view)
+    public StatusController(IGameModel model, IStatusView view)
     {
         super(model);
         this.view = view;
@@ -34,11 +34,9 @@ public class StatusBarController extends AbstractController implements ActionLis
 
     private void initGameClock()
     {
+        remainingTime = getModel().getSettings().getTotalGameTime();
+        System.out.println("Remaining time init = " + remainingTime);
         gameClock = new Timer(1000, this);
-        if (gameClock.isRunning())
-        {
-            gameClock.stop();
-        }
     }
 
     private void initStateHandlers()
@@ -68,8 +66,10 @@ public class StatusBarController extends AbstractController implements ActionLis
     {
         if (remainingTime <= 0)
         {
+            System.out.println("Remaining time = " + remainingTime);
             getModel().requestStateChange(GameState.POST_ACTIVE_GAME);
             remainingTime = getTotalTime();
+            gameClock.stop();
         }
         else
         {
