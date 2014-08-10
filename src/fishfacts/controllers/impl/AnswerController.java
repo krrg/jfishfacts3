@@ -22,6 +22,7 @@ public class AnswerController extends AbstractController implements IAnswerContr
     private IGameSettings<Integer> gameSettings = null;
     private IAquarium aquarium = null;
     private ProblemTuple<Integer> currentProblem = null;
+    private boolean wrongAnswerFlag = false;
     private IAnswerView view = null;
 
     public AnswerController(IGameModel model, IAnswerView view)
@@ -72,33 +73,53 @@ public class AnswerController extends AbstractController implements IAnswerContr
     {
         if (newState == GameState.ACTIVE_GAME_PENDING)
         {
-            generateNewProblem();
-            view.clearFields();
-            view.focusAnswerField();
-            refreshView();
+            handlePendingAnswer();
         }
         else if (newState == GameState.ACTIVE_GAME_WRONG_ANSWER)
         {
-            view.freezeView();
-            final Timer unfreezeTimer = new Timer(getIncorrectTimeout(), null);
-            unfreezeTimer.addActionListener(new ActionListener()
-            {
-                @Override
-                public void actionPerformed(ActionEvent actionEvent)
-                {
-                    unfreezeTimer.stop();
-                    view.unfreezeView();
-                    getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
-                }
-            });
-
-            unfreezeTimer.setRepeats(false);
-            unfreezeTimer.start();
+            handleWrongAnswer();
         }
         else if (newState == GameState.ACTIVE_GAME_CORRECT_ANSWER)
         {
-            getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
+            handleCorrectAnswer();
         }
+    }
+
+    private void handlePendingAnswer()
+    {
+        if (!wrongAnswerFlag)
+        {
+            generateNewProblem();
+        }
+        view.clearFields();
+        view.focusAnswerField();
+        refreshView();
+    }
+
+    private void handleCorrectAnswer()
+    {
+        getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
+    }
+
+    private void handleWrongAnswer()
+    {
+        wrongAnswerFlag = true;
+        view.freezeView();
+        final Timer unfreezeTimer = new Timer(getIncorrectTimeout(), null);
+        unfreezeTimer.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                unfreezeTimer.stop();
+                view.unfreezeView();
+                getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
+                wrongAnswerFlag = false;
+            }
+        });
+
+        unfreezeTimer.setRepeats(false);
+        unfreezeTimer.start();
     }
 
     private void generateNewProblem()

@@ -4,10 +4,10 @@ import fishfacts.controllers.AbstractController;
 import fishfacts.model.GameState;
 import fishfacts.model.IGameModel;
 import fishfacts.model.IGameStateListener;
-import fishfacts.model.aqua.impl.TestFish;
 import fishfacts.views.IStatusView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -49,6 +49,8 @@ public class StatusController extends AbstractController implements ActionListen
         stateHandlers.put(GameState.ACTIVE_GAME_CORRECT_ANSWER, new PostCorrectAnswerHandler());
         stateHandlers.put(GameState.ACTIVE_GAME_WRONG_ANSWER, active);
         stateHandlers.put(GameState.POST_ACTIVE_GAME, new PostActiveStateHandler());
+        stateHandlers.put(GameState.POST_ACTIVE_GAME_WON, new PostActiveGameMessageHandler());
+        stateHandlers.put(GameState.POST_ACTIVE_GAME_LOST, new PostActiveGameMessageHandler());
     }
 
     @Override
@@ -90,7 +92,9 @@ public class StatusController extends AbstractController implements ActionListen
 
     private int getCurrentNumFish()
     {
-        return getModel().getAquarium().getTankContents().size();
+        int result = getModel().getAquarium().getTankContents().size();
+        System.out.println("\t\t<Aquarium Size> = " + result);
+        return  result;
     }
 
     private void refreshGameStats()
@@ -120,7 +124,28 @@ public class StatusController extends AbstractController implements ActionListen
         @Override
         public void stateChanged(GameState newState)
         {
+            if (getCurrentNumFish() >= getFishCapacity())
+            {
+                System.out.println("Detected at capacity.");
+                getModel().requestStateChange(GameState.POST_ACTIVE_GAME);
+                getModel().requestStateChange(GameState.POST_ACTIVE_GAME_WON);
+                getModel().requestStateChange(GameState.START_SCREEN);
+            }
             refreshGameStats();
+        }
+    }
+
+    private class PostActiveGameMessageHandler implements IGameStateListener
+    {
+        @Override
+        public void stateChanged(GameState newState) {
+            if (newState == GameState.POST_ACTIVE_GAME_WON) {
+                javax.swing.JOptionPane.showMessageDialog((Component) view, "Good job! You've filled the tank!");
+            }
+            else if (newState == GameState.POST_ACTIVE_GAME_LOST)
+            {
+                javax.swing.JOptionPane.showMessageDialog((Component) view, "Oh no! You ran out of time!");
+            }
         }
     }
 
@@ -130,10 +155,6 @@ public class StatusController extends AbstractController implements ActionListen
         public void stateChanged(GameState newState) {
 
 
-            if (getCurrentNumFish() == getFishCapacity())
-            {
-                getModel().requestStateChange(GameState.POST_ACTIVE_GAME);
-            }
             refreshGameStats();
         }
     }
@@ -154,6 +175,7 @@ public class StatusController extends AbstractController implements ActionListen
         @Override
         public void stateChanged(GameState newState)
         {
+            remainingTime = getTotalTime();
             gameClock.start();
         }
     }

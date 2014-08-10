@@ -22,11 +22,11 @@ public class StartButtonController extends AbstractController implements IStartB
     @Override
     public void stateChanged(GameState newState)
     {
-        if (newState == GameState.START_SCREEN)
+        if (newState == GameState.START_SCREEN || newState == GameState.POST_ACTIVE_GAME)
         {
             view.enableStartButton();
         }
-        else
+        else if (newState == GameState.PRE_START)
         {
             view.disableStartButton();
         }

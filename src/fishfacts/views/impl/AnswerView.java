@@ -22,6 +22,9 @@ public class AnswerView extends JPanel implements IAnswerView
     private Font defaultFont = null;
     private IAnswerController controller = null;
 
+    private Color normalFontColor = null;
+    private Color frozenFontColor = new Color(0.5F, 0.0F, 0.5F);
+
     public AnswerView()
     {
         initComponents();
@@ -124,12 +127,15 @@ public class AnswerView extends JPanel implements IAnswerView
     @Override
     public void freezeView()
     {
+        normalFontColor = txtAnswer.getBackground();
+        txtAnswer.setBackground(frozenFontColor);
         txtAnswer.setEnabled(false);
     }
 
     @Override
     public void unfreezeView()
     {
+        this.txtAnswer.setBackground(normalFontColor);
         txtAnswer.setEnabled(true);
     }
 

@@ -10,6 +10,8 @@ public enum GameState
     ACTIVE_GAME_PENDING, //When we are waiting for the user to input an answer
     ACTIVE_GAME_WRONG_ANSWER, //When the wrong answer has been given
     ACTIVE_GAME_CORRECT_ANSWER, //When the correct answer has been given
-    POST_ACTIVE_GAME //When the user has filled the tank or run out of time
+    POST_ACTIVE_GAME_WON,
+    POST_ACTIVE_GAME_LOST,
+    POST_ACTIVE_GAME // For any cleanup that needs to happen, regardless of win or loss.
 }
 

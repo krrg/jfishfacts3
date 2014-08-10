@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="jfishfacts3:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jfishfacts3_jar</output-path>
+    <root id="archive" name="jfishfacts3.jar">
+      <element id="module-output" name="jfishfacts3" />
+    </root>
+  </artifact>
+</component>

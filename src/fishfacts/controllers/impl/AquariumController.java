@@ -55,8 +55,16 @@ public class AquariumController extends AbstractController implements IAquariumC
     private void initStateHandlers()
     {
         //TODO: Finish this section
-        stateHandlers.put(GameState.PRE_START, null);
+        stateHandlers.put(GameState.PRE_START, new PreStartHandler());
         stateHandlers.put(GameState.ACTIVE_GAME_CORRECT_ANSWER, new CorrectAnswerHandler());
+    }
+
+    private class PreStartHandler implements IGameStateListener
+    {
+        @Override
+        public void stateChanged(GameState newState) {
+            fishAquarium.clearAllObjects();
+        }
     }
 
     //The swim clock moves the fish and the bubbles every 25ms.
@@ -212,8 +220,9 @@ public class AquariumController extends AbstractController implements IAquariumC
 
         private IAquariumObject createRandomFish()
         {
+            System.out.println("Creating a random fish....");
             return FishBuilder.getInstance()
-                    .createRandomFish(fishAquarium.getWidth(), (int)(fishAquarium.getHeight() * 0.90));
+                    .createRandomFish((int)(fishAquarium.getWidth()), (int)(fishAquarium.getHeight()));
         }
 
         private int getCorrectAnswersPerFish()

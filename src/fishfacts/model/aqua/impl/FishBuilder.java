@@ -37,8 +37,10 @@ public class FishBuilder
 
     public AbstractAquariumObject createRandomFish(int maxX, int maxY)
     {
-        int x = rand.nextInt(maxX);
-        int y = rand.nextInt(maxY);
+        int x = rand.nextInt(maxX - 48);
+        int y = rand.nextInt(maxY - 48);
+
+        System.out.println("New fish at (" + x + ", " + y + ")");
 
         return new TestFish(new Point2D.Double(x, y), createTestImage(Color.GREEN));
     }
