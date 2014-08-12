@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="org.glassfish.jersey:jax-rs-ri:2.0-rc1" type="repository">
+    <properties maven-id="org.glassfish.jersey:jax-rs-ri:2.0-rc1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jax-rs-ri-2.0-rc1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet-3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.annotation-api-1.2-b02.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/persistence-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jaxb-api-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stax-api-1.0-2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/activation-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-14.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hk2-api-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/osgi-resource-locator-1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hk2-utils-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hk2-locator-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-all-repackaged-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cglib-2.1.78.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/validation-api-1.1.0.CR3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.osgi.core-4.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/jax-rs-ri-2.0-rc1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

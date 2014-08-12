@@ -1,11 +1,19 @@
 package fishfacts;
 
+import com.sun.net.httpserver.HttpServer;
 import fishfacts.controllers.impl.*;
 import fishfacts.model.GameModel;
 import fishfacts.views.impl.*;
 
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.simple.SimpleContainer;
+import org.glassfish.jersey.simple.SimpleContainerFactory;
+import org.glassfish.jersey.simple.SimpleServer;
+
 import javax.swing.*;
+import javax.ws.rs.core.UriBuilder;
 import java.awt.*;
+import java.net.URI;
 
 /**
  * Created by krr428 on 7/3/14.
@@ -14,6 +22,8 @@ public class Main
 {
     public static void main(String[] args)
     {
+        startAdminServer();
+
         JFrame jf = new JFrame("JFishFacts 3");
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -23,7 +33,13 @@ public class Main
         jf.setVisible(true);
     }
 
-    public static JComponent createMainView()
+    private static void startAdminServer()
+    {
+        URI baseUri = UriBuilder.fromUri("http://127.0.0.1/").port(9090).build();
+        ResourceConfig config = new ResourceConfig(SettingsController.WebStatusResource.class);
+    }
+
+    private static JComponent createMainView()
     {
 //        IAnswerView answerView = null;
 //        IAquariumView aquariumView = null;
