@@ -104,6 +104,7 @@ public class AnswerController extends AbstractController implements IAnswerContr
     private void handleWrongAnswer()
     {
         wrongAnswerFlag = true;
+        view.setAnswerText(currentProblem.getAnswer().toString());
         view.freezeView();
         final Timer unfreezeTimer = new Timer(getIncorrectTimeout(), null);
         unfreezeTimer.addActionListener(new ActionListener()

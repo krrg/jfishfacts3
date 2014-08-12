@@ -6,6 +6,8 @@ import fishfacts.views.IAnswerView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -23,7 +25,7 @@ public class AnswerView extends JPanel implements IAnswerView
     private IAnswerController controller = null;
 
     private Color normalFontColor = null;
-    private Color frozenFontColor = new Color(0.5F, 0.0F, 0.5F);
+    private final Color frozenFontColor = new Color(0.5F, 0.0F, 0.5F);
 
     public AnswerView()
     {
@@ -81,6 +83,14 @@ public class AnswerView extends JPanel implements IAnswerView
                     System.out.println("Enter key pressed, handing off to controller.");
                     controller.handleAnswer(txtAnswer.getText());
                 }
+            }
+        });
+        this.addComponentListener(new ComponentAdapter()
+        {
+            @Override
+            public void componentShown(ComponentEvent e)
+            {
+                System.out.println(txtAnswer.requestFocusInWindow());
             }
         });
     }
