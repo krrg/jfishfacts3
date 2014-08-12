@@ -70,6 +70,8 @@ public class StatusController extends AbstractController implements ActionListen
         {
             System.out.println("Remaining time = " + remainingTime);
             getModel().requestStateChange(GameState.POST_ACTIVE_GAME);
+            getModel().requestStateChange(GameState.POST_ACTIVE_GAME_LOST);
+            getModel().requestStateChange(GameState.START_SCREEN);
             remainingTime = getTotalTime();
             gameClock.stop();
         }
