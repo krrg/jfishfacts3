@@ -4,11 +4,8 @@ import com.sun.net.httpserver.HttpServer;
 import fishfacts.controllers.impl.*;
 import fishfacts.model.GameModel;
 import fishfacts.views.impl.*;
-
+import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.simple.SimpleContainer;
-import org.glassfish.jersey.simple.SimpleContainerFactory;
-import org.glassfish.jersey.simple.SimpleServer;
 
 import javax.swing.*;
 import javax.ws.rs.core.UriBuilder;
@@ -35,8 +32,11 @@ public class Main
 
     private static void startAdminServer()
     {
-        URI baseUri = UriBuilder.fromUri("http://127.0.0.1/").port(9090).build();
-        ResourceConfig config = new ResourceConfig(SettingsController.WebStatusResource.class);
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
+        ResourceConfig config = new ResourceConfig(SettingsController.class);
+        HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
+
+        System.out.println("Server is listening on " + server.getAddress());
     }
 
     private static JComponent createMainView()

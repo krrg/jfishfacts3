@@ -3,6 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/jfishfacts3_jar</output-path>
     <root id="archive" name="jfishfacts3.jar">
       <element id="module-output" name="jfishfacts3" />
+      <element id="library" level="project" name="org.freemarker:freemarker:2.3.20" />
+      <element id="library" level="project" name="org.glassfish.jersey.containers:jersey-container-jdk-http:2.10.1" />
     </root>
   </artifact>
 </component>
