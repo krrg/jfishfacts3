@@ -37,7 +37,9 @@ public class SettingsController extends AbstractController implements ISettingsC
     @Produces("text/css")
     public String getBaseCSS()
     {
-        return readHTMLFile("base.css");
+        String css = readHTMLFile("base.css");
+        System.out.println(css);
+        return css;
     }
 
     public String readHTMLFile(String file)
