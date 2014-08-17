@@ -1,17 +1,22 @@
 package fishfacts.controllers.impl;
 
+import com.google.gson.*;
 import fishfacts.controllers.AbstractController;
 import fishfacts.controllers.ISettingsController;
 import fishfacts.model.GameModel;
 import fishfacts.model.GameState;
-import fishfacts.model.IGameModel;
+import fishfacts.model.operations.*;
 import fishfacts.model.settings.IGameSettings;
-import org.glassfish.jersey.message.internal.MediaTypes;
+import org.stringtemplate.v4.ST;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.print.DocFlavor;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.Response;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -29,7 +34,41 @@ public class SettingsController extends AbstractController implements ISettingsC
     @Produces("text/html")
     public String getString()
     {
-        return readHTMLFile("settings.html");
+        ST template = new ST(readTextContent("settings.html"), '$', '$');
+
+        template.add("csTotal", getGameSettings().getTotalGameTime());
+        template.add("csDelay", getGameSettings().getIncorrectTimeout());
+        template.add("asTotalFish", getGameSettings().getTankCapacity());
+        template.add("asCorrectAnswers", getGameSettings().getCorrectPerFish());
+        template.add("fsAddEnabled", isOperationEnabled(Add.getInstance()));
+        template.add("fsSubEnabled", isOperationEnabled(Subtract.getInstance()));
+        template.add("fsMultEnabled", isOperationEnabled(Multiply.getInstance()));
+        template.add("fsDivEnabled", isOperationEnabled(Divide.getInstance()));
+
+        template.add("fsAddVals0", getJsonArray(getGameSettings().getAllowedOperandsFor(Add.getInstance(), 0)));
+        template.add("fsAddVals1", getJsonArray(getGameSettings().getAllowedOperandsFor(Add.getInstance(), 1)));
+        template.add("fsSubVals0", getJsonArray(getGameSettings().getAllowedOperandsFor(Subtract.getInstance(), 0)));
+        template.add("fsSubVals1", getJsonArray(getGameSettings().getAllowedOperandsFor(Subtract.getInstance(), 1)));
+        template.add("fsMultVals0", getJsonArray(getGameSettings().getAllowedOperandsFor(Multiply.getInstance(), 0)));
+        template.add("fsMultVals1", getJsonArray(getGameSettings().getAllowedOperandsFor(Multiply.getInstance(), 1)));
+        template.add("fsDivVals0", getJsonArray(getGameSettings().getAllowedOperandsFor(Divide.getInstance(), 0)));
+        template.add("fsDivVals1", getJsonArray(getGameSettings().getAllowedOperandsFor(Divide.getInstance(), 1)));
+
+        return template.render();
+    }
+
+    public static <T> String  getJsonArray(Collection<T> values)
+    {
+        if (values == null)
+        {
+            return "";
+        }
+        return new Gson().toJson(values);
+    }
+
+    private boolean isOperationEnabled(AbstractOperator<Integer> operator)
+    {
+        return getGameSettings().getAllowedOperations().contains(operator);
     }
 
     @GET
@@ -37,12 +76,26 @@ public class SettingsController extends AbstractController implements ISettingsC
     @Produces("text/css")
     public String getBaseCSS()
     {
-        String css = readHTMLFile("base.css");
-        System.out.println(css);
-        return css;
+        return readTextContent("base.css");
     }
 
-    public String readHTMLFile(String file)
+    @GET
+    @Path("display.js")
+    @Produces("text/javascript")
+    public String getDisplayJS()
+    {
+        return readTextContent("display.js");
+    }
+
+    @GET
+    @Path("settingsController.js")
+    @Produces("text/javascript")
+    public String getSettingsController()
+    {
+        return readTextContent("settingsController.js");
+    }
+
+    public String readTextContent(String file)
     {
         StringBuilder sb = new StringBuilder();
         Scanner sc = new Scanner(SettingsController.class.getResourceAsStream("html/" + file));
@@ -51,6 +104,80 @@ public class SettingsController extends AbstractController implements ISettingsC
             sb.append(sc.nextLine()).append('\n');
         }
         return sb.toString();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Path("/clockSettingsSave")
+    public Response ajax_clockSettingsSave(MultivaluedMap<String, String> params)
+    {
+        String strTotalTime = params.getFirst("totalTime");
+        String strDelayTime = params.getFirst("answerDelay");
+
+        int totalTime = getPositiveInt(strTotalTime);
+        int delayTime = getPositiveInt(strDelayTime);
+
+        if (totalTime < 0)
+        {
+            return createInvalidNumberResponse(strTotalTime);
+        }
+        else if (delayTime < 0)
+        {
+            return createInvalidNumberResponse(strDelayTime);
+        }
+
+        getGameSettings().setTotalGameTime(totalTime);
+        getGameSettings().setIncorrectTimeout(delayTime);
+
+        return Response.ok("Server says: I've saved the clock settings.").build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Path("/aquariumSettingsSave")
+    public Response ajax_aquariumSettingsSave(MultivaluedMap<String, String> params)
+    {
+        String strTotalFish = params.getFirst("totalFish");
+        String strNumCorrect = params.getFirst("numCorrect");
+
+        int totalFish = getPositiveInt(strTotalFish);
+        int numCorrect = getPositiveInt(strNumCorrect);
+
+        if (totalFish < 0)
+        {
+            return createInvalidNumberResponse(strTotalFish);
+        }
+        else if (numCorrect < 0)
+        {
+            return createInvalidNumberResponse(strNumCorrect);
+        }
+
+        getGameSettings().setTankCapacity(totalFish);
+        getGameSettings().setCorrectPerFish(numCorrect);
+
+        return Response.ok("Server says: I've saved the aquarium settings.").build();
+    }
+
+    private Response createInvalidNumberResponse(String invalidString)
+    {
+        return Response.status(400).entity("The server says: Sorry, '" + invalidString + "' doesn't look like a positive integer...").build();
+    }
+
+    private int getPositiveInt(String str)
+    {
+        try
+        {
+            return Integer.parseInt(str);
+        }
+        catch (NumberFormatException ex)
+        {
+            return -1;
+        }
+    }
+
+    private IGameSettings<Integer> getGameSettings()
+    {
+        return GameModel.getInstance().getSettings();
     }
 
     @Override

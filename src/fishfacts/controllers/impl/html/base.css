@@ -1,23 +1,55 @@
 body {
-    background: #FFFFFF;
+    font-family: 'Oxygen', sans-serif;
     margin: 0px;
-    border: 0px;
-    padding: 0px;
+    background: #D9D9CC;
 }
 
-.topBar {
+#topBar {
     background: #444444;
-    color: #CCCCCC;
-    width: 100%;
+    font-weight: 700;
     height: 48px;
+}
+
+#topBar h1 {
+    position: absolute;
+    top: 0px;
+    color: #FEFEFE;
     margin: 0px;
-    border: 0px;
     padding: 0px;
 }
 
 .content {
+    width: 70%;
+    min-width: 640px;
+    max-width: 1168px;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
-    background: pink;
+}
+
+.content .main {
+    margin: 36px;
+    display: block;
+}
+
+#bottomBar {
+    font-weight: 400;
+    height: 48px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.goodMessage {
+    background: #88D988;
+}
+
+.badMessage {
+    background: #D98888;
+}
+
+.numberPad {
+    float: left;
+    margin: 5px;
 }

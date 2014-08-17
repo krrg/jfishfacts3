@@ -9,35 +9,96 @@
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 
+    <!--Font import-->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>-->
+
     <!--Our stylesheet-->
     <link rel="stylesheet" href="base.css" type="text/css" />
+
 </head>
 <body>
-    <div class="topBar">
-        <h1>JFishFacts3&mdash;Configuration</h1>
+    <div id="topBar">
+        <div class="content"><h1>JFishFacts3 Configuration</h1></div>
     </div>
 
     <div class="content">
-        <div id="settingsDiv">
-            <h3>Time Settings</h3>
-            <div>
-                <button>Save</button>
-            </div>
-            <h3>Aquarium Settings</h3>
-            <div>
+        <div class="main">
 
+            <div class="accordionWidget">
+                <h3>Clock Settings</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Total amount of time per game:&nbsp;</td><td><input id="csTotal" class="spinner" size="4" value="$csTotal$"/>&nbsp;seconds</td>
+                        </tr>
+                        <tr>
+                            <td>Incorrect answer delay:&nbsp;</td><td><input id="csDelay" class="spinner" size="4" value="$csDelay$" />&nbsp;milliseconds</td>
+                        </tr>
+                    </table>
+                    <button id="clockSettingsSave">
+                        Save
+                    </button>
+                </div>
             </div>
-            <h3>Fact Settings</h3>
-            <div>
-
+            <div class="accordionWidget">
+                <h3>Aquarium Settings</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Number of fish required to win game:&nbsp;</td><td><input id="asTotalFish" class="spinner" size="4" value="$asTotalFish$" />&nbsp;total fish</td>
+                        </tr>
+                        <tr>
+                            <td>Number of correct answers per fish:&nbsp;</td><td><input id="asNumCorrect" class="spinner" size="4" value="$asCorrectAnswers$" />&nbsp;correct answers</td>
+                        </tr>
+                    </table>
+                    <button id="aquariumSettingsSave">
+                        Save
+                    </button>
+                </div>
+            </div>
+            <div class="accordionWidget">
+                <h3>Fact Settings</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Addition:&nbsp;</td>
+                            <td><input type="checkbox" $if(fsAddEnabled)$checked="checked"$endif$/></td>
+                            <td><input type="text" value="$fsAddVals0$"/></td>
+                            <td><input type="text" value="$fsAddVals1$"/></td>
+                        </tr>
+                        <tr>
+                            <td>Subtraction:&nbsp;</td>
+                            <td><input type="checkbox" $if(fsSubEnabled)$checked="checked"$endif$/></td>
+                            <td><input type="text" value="$fsSubVals0$"/></td>
+                            <td><input type="text" value="$fsSubVals1$"/></td>
+                        </tr>
+                        <tr>
+                            <td>Multiplication:&nbsp;</td>
+                            <td><input type="checkbox" $if(fsMultEnabled)$checked="checked"$endif$/></td>
+                            <td><input type="text" value="$fsMultVals0$"/></td>
+                            <td><input type="text" value="$fsMultVals1$"/></td>
+                        </tr>
+                        <tr>
+                            <td>Division:&nbsp;</td>
+                            <td><input type="checkbox" $if(fsDivEnabled)$checked="checked"$endif$/></td>
+                            <td><input type="text" value="$fsDivVals0$"/></td>
+                            <td><input type="text" value="$fsDivVals1$"/></td>
+                        </tr>
+                    </table>
+                    <button id="factSettingsSave">
+                        Save
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
+    <div id="bottomBar">
+        <div class="content"><p id="message">This is test content that can be displayed.</p></div>
+    </div>
 
-    <script>
-        $("#settingsDiv").accordion();
-        $("button").button();
-    </script>
+    <script src="display.js"></script>
+    <script src="settingsController.js"></script>
 </body>
 </html>

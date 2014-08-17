@@ -21,18 +21,18 @@ public class Main
     {
         startAdminServer();
 
-        JFrame jf = new JFrame("JFishFacts 3");
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        jf.add(createMainView());
-
-        jf.setSize(640, 480);
-        jf.setVisible(true);
+//        JFrame jf = new JFrame("JFishFacts 3");
+//        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//        jf.add(createMainView());
+//
+//        jf.setSize(640, 480);
+//        jf.setVisible(true);
     }
 
     private static void startAdminServer()
     {
-        URI baseUri = UriBuilder.fromUri("http://localhost/").port(9998).build();
+        URI baseUri = UriBuilder.fromUri("http://localhost/").port(8686).build();
         ResourceConfig config = new ResourceConfig(SettingsController.class);
         HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
 
