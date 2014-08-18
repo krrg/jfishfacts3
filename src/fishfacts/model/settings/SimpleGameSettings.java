@@ -29,10 +29,14 @@ public class SimpleGameSettings implements IGameSettings<Integer>
     {
         this.addAllowedOperation(Add.getInstance());
         this.addAllowedOperation(Multiply.getInstance());
-        this.setAllowedOperandsFor(Add.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        this.setAllowedOperandsFor(Add.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        this.setAllowedOperandsFor(Multiply.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
-        this.setAllowedOperandsFor(Multiply.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Add.getInstance(), 0, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Add.getInstance(), 1, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Subtract.getInstance(), 0, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7 ,8, 9));
+        this.setAllowedOperandsFor(Subtract.getInstance(), 0, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7 ,8, 9));
+        this.setAllowedOperandsFor(Multiply.getInstance(), 0, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Multiply.getInstance(), 1, Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+        this.setAllowedOperandsFor(Divide.getInstance(), 0, Arrays.asList(1, 2, 3, 4, 5, 6, 7 ,8, 9));
+        this.setAllowedOperandsFor(Divide.getInstance(), 1, Arrays.asList(1, 2, 3, 4, 5, 6, 7 ,8, 9));
 
         this.totalGameTime = 60;
     }

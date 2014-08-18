@@ -14,10 +14,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by krr428 on 7/5/14.
@@ -129,7 +126,7 @@ public class SettingsController extends AbstractController implements ISettingsC
         getGameSettings().setTotalGameTime(totalTime);
         getGameSettings().setIncorrectTimeout(delayTime);
 
-        return Response.ok("Server says: I've saved the clock settings.").build();
+        return Response.ok("Your clock settings have been saved.").build();
     }
 
     @POST
@@ -155,7 +152,70 @@ public class SettingsController extends AbstractController implements ISettingsC
         getGameSettings().setTankCapacity(totalFish);
         getGameSettings().setCorrectPerFish(numCorrect);
 
-        return Response.ok("Server says: I've saved the aquarium settings.").build();
+        return Response.ok("Your aquarium settings have been saved.").build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Path("/factSettingsSave")
+    public Response ajax_factSettingsSave(MultivaluedMap<String, String> params)
+    {
+        setOperatorSettings(
+                Add.getInstance(),
+                params.getFirst("add[enabled]"),
+                params.get("add[terms0][]"),
+                params.get("add[terms1][]")
+        );
+        setOperatorSettings(
+                Subtract.getInstance(),
+                params.getFirst("sub[enabled]"),
+                params.get("sub[terms0][]"),
+                params.get("sub[terms1][]")
+        );
+        setOperatorSettings(
+                Multiply.getInstance(),
+                params.getFirst("mult[enabled]"),
+                params.get("mult[terms0][]"),
+                params.get("mult[terms1][]")
+        );
+        setOperatorSettings(
+                Divide.getInstance(),
+                params.getFirst("div[enabled]"),
+                params.get("div[terms0][]"),
+                params.get("div[terms1][]")
+        );
+
+        return Response.ok("Your fact settings have been saved.").build();
+    }
+
+    private void setOperatorSettings(AbstractOperator<Integer> operator, String strEnabled, List<String> rawAllowed0, List<String> rawAllowed1)
+    {
+        boolean enabled = strEnabled.contains("true");
+        Set<Integer> allowed0 = new HashSet<>(toIntegerList(rawAllowed0));
+        Set<Integer> allowed1 = new HashSet<>(toIntegerList(rawAllowed1));
+
+        if (enabled)
+        {
+            getGameSettings().addAllowedOperation(operator);
+        }
+        else
+        {
+            getGameSettings().removeAllowedOperation(operator);
+        }
+
+        getGameSettings().setAllowedOperandsFor(operator, 0, allowed0);
+        getGameSettings().setAllowedOperandsFor(operator, 1, allowed1);
+
+    }
+
+    private List<Integer> toIntegerList(List<String> strings)
+    {
+        List<Integer> integerList = new ArrayList<>();
+        for (String s: strings)
+        {
+            integerList.add(Integer.parseInt(s));
+        }
+        return integerList;
     }
 
     private Response createInvalidNumberResponse(String invalidString)

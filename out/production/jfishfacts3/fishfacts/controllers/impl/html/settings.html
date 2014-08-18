@@ -63,27 +63,27 @@
                     <table>
                         <tr>
                             <td>Addition:&nbsp;</td>
-                            <td><input type="checkbox" $if(fsAddEnabled)$checked="checked"$endif$/></td>
-                            <td><input type="text" value="$fsAddVals0$"/></td>
-                            <td><input type="text" value="$fsAddVals1$"/></td>
+                            <td><input id="fsAddEnabled" type="checkbox" $if(fsAddEnabled)$checked="checked"$endif$/></td>
+                            <td><span id="fsAdd0" class="buttonset"></span></td>
+                            <td><span id="fsAdd1" class="buttonset"></span></td>
                         </tr>
                         <tr>
                             <td>Subtraction:&nbsp;</td>
-                            <td><input type="checkbox" $if(fsSubEnabled)$checked="checked"$endif$/></td>
-                            <td><input type="text" value="$fsSubVals0$"/></td>
-                            <td><input type="text" value="$fsSubVals1$"/></td>
+                            <td><input id="fsSubEnabled" type="checkbox" $if(fsSubEnabled)$checked="checked"$endif$/></td>
+                            <td><span id="fsSub0" class="buttonset"></span></td>
+                            <td><span id="fsSub1" class="buttonset"></span></td>
                         </tr>
                         <tr>
                             <td>Multiplication:&nbsp;</td>
-                            <td><input type="checkbox" $if(fsMultEnabled)$checked="checked"$endif$/></td>
-                            <td><input type="text" value="$fsMultVals0$"/></td>
-                            <td><input type="text" value="$fsMultVals1$"/></td>
+                            <td><input id="fsMultEnabled" type="checkbox" $if(fsMultEnabled)$checked="checked"$endif$/></td>
+                            <td><span id="fsMult0" class="buttonset"></span></td>
+                            <td><span id="fsMult1" class="buttonset"></span></td>
                         </tr>
                         <tr>
                             <td>Division:&nbsp;</td>
-                            <td><input type="checkbox" $if(fsDivEnabled)$checked="checked"$endif$/></td>
-                            <td><input type="text" value="$fsDivVals0$"/></td>
-                            <td><input type="text" value="$fsDivVals1$"/></td>
+                            <td><input id="fsDivEnabled" type="checkbox" $if(fsDivEnabled)$checked="checked"$endif$/></td>
+                            <td><span id="fsDiv0" class="buttonset"></span></td>
+                            <td><span id="fsDiv1" class="buttonset"></span></td>
                         </tr>
                     </table>
                     <button id="factSettingsSave">
@@ -100,5 +100,29 @@
 
     <script src="display.js"></script>
     <script src="settingsController.js"></script>
+    <script type="text/javascript">
+
+        var add0 = $fsAddVals0$;
+        var add1 = $fsAddVals1$;
+        var sub0 = $fsSubVals0$;
+        var sub1 = $fsSubVals1$;
+        var mult0 = $fsMultVals0$;
+        var mult1 = $fsMultVals1$;
+        var div0 = $fsDivVals0$;
+        var div1 = $fsDivVals1$;
+
+
+        NumberSettings.setCheckedFor(add0, "fsAdd0");
+        NumberSettings.setCheckedFor(add1, "fsAdd1");
+        NumberSettings.setCheckedFor(sub0, "fsSub0");
+        NumberSettings.setCheckedFor(sub1, "fsSub1");
+        NumberSettings.setCheckedFor(mult0, "fsMult0");
+        NumberSettings.setCheckedFor(mult1, "fsMult1");
+        NumberSettings.setCheckedFor(div0, "fsDiv0");
+        NumberSettings.setCheckedFor(div1, "fsDiv1");
+
+        jQuery(".buttonset").buttonset();
+
+    </script>
 </body>
 </html>

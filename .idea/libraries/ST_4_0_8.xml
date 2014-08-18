@@ -2,7 +2,6 @@
   <library name="ST-4.0.8">
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/ST-4.0.8.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/antlr-4.4-complete.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

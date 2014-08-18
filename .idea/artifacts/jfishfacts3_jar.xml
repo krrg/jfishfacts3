@@ -20,7 +20,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-server-2.10.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jersey-client-2.10.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/validation-api-1.1.0.Final.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/antlr-4.4-complete.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

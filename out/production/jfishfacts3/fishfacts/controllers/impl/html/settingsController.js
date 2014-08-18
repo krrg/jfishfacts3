@@ -54,6 +54,19 @@ var SettingsController = (function($) {
     );
   }
 
+  internal.factSettingsSave = function(add, sub, mult, div)
+  {
+    internal.save(
+        "/factSettingsSave",
+        {
+            "add": add,
+            "sub": sub,
+            "mult": mult,
+            "div": div
+        }
+    )
+  }
+
 
   return internal;
 }(jQuery));
@@ -76,4 +89,50 @@ $("#aquariumSettingsSave").click(function() {
     SettingsController.aquariumSettingsSave(totalFish, numCorrect);
 })
 
-})(jQuery)
+$("#factSettingsSave").click(function(){
+    var addEnabled = $("#fsAddEnabled").is(":checked");
+    var subEnabled = $("#fsSubEnabled").is(":checked");
+    var multEnabled = $("#fsMultEnabled").is(":checked");
+    var divEnabled = $("#fsDivEnabled").is(":checked");
+
+    var addNums0 = NumberSettings.getCheckedFor("fsAdd0");
+    var addNums1 = NumberSettings.getCheckedFor("fsAdd1");
+    var subNums0 = NumberSettings.getCheckedFor("fsSub0");
+    var subNums1 = NumberSettings.getCheckedFor("fsSub1");
+    var multNums0 = NumberSettings.getCheckedFor("fsMult0");
+    var multNums1 = NumberSettings.getCheckedFor("fsMult1");
+    var divNums0 = NumberSettings.getCheckedFor("fsDiv0");
+    var divNums1 = NumberSettings.getCheckedFor("fsDiv1");
+
+    var add = {
+        "enabled": addEnabled,
+        "terms0": addNums0,
+        "terms1": addNums1
+    }
+
+    var sub = {
+        "enabled": subEnabled,
+        "terms0": subNums0,
+        "terms1": subNums1
+    }
+
+    var mult = {
+        "enabled": multEnabled,
+        "terms0": multNums0,
+        "terms1": multNums1
+    }
+
+    var div = {
+        "enabled": divEnabled,
+        "terms0": divNums0,
+        "terms1": divNums1
+    }
+
+    SettingsController.factSettingsSave(add, sub, mult, div);
+})
+
+})(jQuery);
+
+
+
+
