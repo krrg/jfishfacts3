@@ -48,7 +48,6 @@ public class Bubble extends AbstractAquariumObject
     public void handleAtEdge()
     {
         //We don't want to do anything, just let the bubble float off the edge and be deleted.
-        return;
     }
 
 }

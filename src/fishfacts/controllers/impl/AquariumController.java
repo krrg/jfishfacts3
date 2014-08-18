@@ -222,7 +222,7 @@ public class AquariumController extends AbstractController implements IAquariumC
         {
             System.out.println("Creating a random fish....");
             return FishBuilder.getInstance()
-                    .createRandomFish((int)(fishAquarium.getWidth()), (int)(fishAquarium.getHeight()));
+                    .createRandomFish(fishAquarium.getWidth(), fishAquarium.getHeight());
         }
 
         private int getCorrectAnswersPerFish()

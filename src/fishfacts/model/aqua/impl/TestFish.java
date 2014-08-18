@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class TestFish extends AbstractAquariumObject
 {
-    private double dirCoeff = 0.5;
+    private double dirCoeff = 0.25;
 
     public TestFish(Point2D location, BufferedImage image)
     {
