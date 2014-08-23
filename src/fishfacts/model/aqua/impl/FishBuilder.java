@@ -1,8 +1,10 @@
 package fishfacts.model.aqua.impl;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -24,16 +26,22 @@ public class FishBuilder
 
     private Random rand = new Random();
 
-    private BufferedImage createTestImage(Color color)
+    private BufferedImage createTestImage()
     {
-        BufferedImage testImage = new BufferedImage(48, 48, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2d = testImage.createGraphics();
-        g2d.setColor(color);
-        g2d.fillRect(0, 0, 48, 48);
-        return testImage;
+        try
+        {
+            return ImageIO.read(FishBuilder.class.getResourceAsStream("res/redfish_east.png"));
+        }
+        catch(IOException e)
+        {
+            BufferedImage errorImage = new BufferedImage(48, 48, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = errorImage.createGraphics();
+            g2d.setColor(new Color(141, 173, 54));
+            g2d.fillOval(0, 0, 48, 48);
+            return errorImage;
+        }
+
     }
-
-
 
     public AbstractAquariumObject createRandomFish(int maxX, int maxY)
     {
@@ -42,6 +50,10 @@ public class FishBuilder
 
         System.out.println("New fish at (" + x + ", " + y + ")");
 
-        return new TestFish(new Point2D.Double(x, y), createTestImage(Color.GREEN));
+        return new BidirectionalFish(new Point2D.Double(x, y), createTestImage(), 0.25);
     }
+
+
+
+
 }

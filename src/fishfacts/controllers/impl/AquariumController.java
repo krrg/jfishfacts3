@@ -85,7 +85,7 @@ public class AquariumController extends AbstractController implements IAquariumC
 
     private void initRedrawClock()
     {
-        redrawClock = new Timer(33, null);
+        redrawClock = new Timer(30, null);
         redrawClock.addActionListener(new RedrawHandler());
         redrawClock.start();
     }

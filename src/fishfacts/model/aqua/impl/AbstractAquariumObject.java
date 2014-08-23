@@ -16,6 +16,11 @@ public abstract class AbstractAquariumObject implements IAquariumObject
     private Point2D location = null;
     private BufferedImage cachedScaledImage = null;
 
+    public AbstractAquariumObject(Point2D location)
+    {
+        this(location, null);
+    }
+
     public AbstractAquariumObject(Point2D location, BufferedImage image)
     {
         this(location.getX(), location.getY(), 1.0, image);
