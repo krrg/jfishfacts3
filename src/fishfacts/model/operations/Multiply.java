@@ -24,7 +24,7 @@ public class Multiply extends AbstractOperator<Integer>
     @Override
     public char getSymbol()
     {
-        return 'X';
+        return '\u2715';
     }
 
     @Override

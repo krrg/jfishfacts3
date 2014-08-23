@@ -41,15 +41,13 @@ public class AnswerController extends AbstractController implements IAnswerContr
                     "Actual state was: " + getModel().getCurrentState());
         }
 
-        if (! isValidAnswer(userAnswer))
+        if (!isValidAnswer(userAnswer))
         {
             getModel().requestStateChange(GameState.ACTIVE_GAME_WRONG_ANSWER);
-        }
-        else if (! currentProblem.isCorrect(Integer.parseInt(userAnswer)))
+        } else if (!currentProblem.isCorrect(Integer.parseInt(userAnswer)))
         {
             getModel().requestStateChange(GameState.ACTIVE_GAME_WRONG_ANSWER);
-        }
-        else
+        } else
         {
             getModel().requestStateChange(GameState.ACTIVE_GAME_CORRECT_ANSWER);
         }
@@ -61,8 +59,7 @@ public class AnswerController extends AbstractController implements IAnswerContr
         {
             Integer.parseInt(answer);
             return true;
-        }
-        catch (NumberFormatException ex)
+        } catch (NumberFormatException ex)
         {
             return false;
         }
@@ -74,12 +71,10 @@ public class AnswerController extends AbstractController implements IAnswerContr
         if (newState == GameState.ACTIVE_GAME_PENDING)
         {
             handlePendingAnswer();
-        }
-        else if (newState == GameState.ACTIVE_GAME_WRONG_ANSWER)
+        } else if (newState == GameState.ACTIVE_GAME_WRONG_ANSWER)
         {
             handleWrongAnswer();
-        }
-        else if (newState == GameState.ACTIVE_GAME_CORRECT_ANSWER)
+        } else if (newState == GameState.ACTIVE_GAME_CORRECT_ANSWER)
         {
             handleCorrectAnswer();
         }
@@ -113,9 +108,12 @@ public class AnswerController extends AbstractController implements IAnswerContr
             public void actionPerformed(ActionEvent actionEvent)
             {
                 unfreezeTimer.stop();
-                view.unfreezeView();
-                getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
-                wrongAnswerFlag = false;
+                if (getModel().getCurrentState() == GameState.ACTIVE_GAME_WRONG_ANSWER)
+                {
+                    view.unfreezeView();
+                    getModel().requestStateChange(GameState.ACTIVE_GAME_PENDING);
+                    wrongAnswerFlag = false;
+                }
             }
         });
 

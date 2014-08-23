@@ -19,7 +19,7 @@ public class Subtract extends AbstractOperator<Integer>
     @Override
     public char getSymbol()
     {
-        return '-';
+        return '\u2212';
     }
 
     @Override

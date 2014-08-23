@@ -24,7 +24,7 @@ public class Add extends AbstractOperator<Integer>
     @Override
     public char getSymbol()
     {
-        return '+';
+        return '\u002B';
     }
 
     @Override

@@ -74,8 +74,7 @@ public class StatusController extends AbstractController implements ActionListen
             getModel().requestStateChange(GameState.START_SCREEN);
             remainingTime = getTotalTime();
             gameClock.stop();
-        }
-        else
+        } else
         {
             remainingTime -= 1;
             view.setTime(remainingTime, getTotalTime());
@@ -96,7 +95,7 @@ public class StatusController extends AbstractController implements ActionListen
     {
         int result = getModel().getAquarium().getTankContents().size();
         System.out.println("\t\t<Aquarium Size> = " + result);
-        return  result;
+        return result;
     }
 
     private void refreshGameStats()
@@ -140,13 +139,14 @@ public class StatusController extends AbstractController implements ActionListen
     private class PostActiveGameMessageHandler implements IGameStateListener
     {
         @Override
-        public void stateChanged(GameState newState) {
-            if (newState == GameState.POST_ACTIVE_GAME_WON) {
-                javax.swing.JOptionPane.showMessageDialog((Component) view, "Good job! You've filled the tank!");
-            }
-            else if (newState == GameState.POST_ACTIVE_GAME_LOST)
+        public void stateChanged(GameState newState)
+        {
+            if (newState == GameState.POST_ACTIVE_GAME_WON)
             {
-                javax.swing.JOptionPane.showMessageDialog((Component) view, "Oh no! You ran out of time!");
+                JOptionPane.showMessageDialog(((JComponent) view).getTopLevelAncestor(), "Good job! You've filled the tank!");
+            } else if (newState == GameState.POST_ACTIVE_GAME_LOST)
+            {
+                JOptionPane.showMessageDialog(((JComponent) view).getTopLevelAncestor(), "Oh no! You ran out of time!");
             }
         }
     }
@@ -154,7 +154,8 @@ public class StatusController extends AbstractController implements ActionListen
     private class PostCorrectAnswerHandler implements IGameStateListener
     {
         @Override
-        public void stateChanged(GameState newState) {
+        public void stateChanged(GameState newState)
+        {
 
 
             refreshGameStats();

@@ -22,12 +22,22 @@ public class StatusView extends JPanel implements IStatusView
     private void initComponents()
     {
         JPanel internalPanel = new JPanel();
-        internalPanel.setLayout(new GridLayout(1, 2));
+        internalPanel.setLayout(new FlowLayout());
 
         timeBar = new JProgressBar();
         fishBar = new JProgressBar();
 
+        JLabel lblTime = new JLabel("Time:");
+        JLabel lblFish = new JLabel(" Fish:");
+
+        lblTime.setFont(lblTime.getFont().deriveFont(16.0F));
+        lblFish.setFont(lblFish.getFont().deriveFont(16.0F));
+        timeBar.setFont(lblTime.getFont());
+        fishBar.setFont(lblFish.getFont());
+
+        internalPanel.add(lblTime);
         internalPanel.add(timeBar);
+        internalPanel.add(lblFish);
         internalPanel.add(fishBar);
 
         this.add(internalPanel);

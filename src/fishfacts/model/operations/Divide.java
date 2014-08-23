@@ -24,7 +24,7 @@ public class Divide extends AbstractOperator<Integer>
     @Override
     public char getSymbol()
     {
-        return '/';
+        return '\u00F7';
     }
 
     @Override
