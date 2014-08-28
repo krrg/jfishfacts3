@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Random;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by krr428 on 7/10/14.
@@ -13,6 +14,11 @@ import java.util.Random;
 public class FishBuilder
 {
     private static FishBuilder instance = null;
+
+    private FishBuilder()
+    {
+        initImages();
+    }
 
     public static FishBuilder getInstance()
     {
@@ -26,11 +32,22 @@ public class FishBuilder
 
     private Random rand = new Random();
 
-    private BufferedImage createTestImage()
+    private Map<String, BufferedImage> imageCache = new HashMap<>();
+
+    private void initImages()
+    {
+        imageCache.put("bigfin", tryReadImage("bigfinfish_east.png"));
+        imageCache.put("bottomfish", tryReadImage("bottomfish_east.png"));
+        imageCache.put("fish8", tryReadImage("fish8_east.png"));
+        imageCache.put("redfish", tryReadImage("redfish_east.png"));
+        imageCache.put("seahorse", tryReadImage("seahorse_east.png"));
+    }
+
+    private BufferedImage tryReadImage(String resFileName)
     {
         try
         {
-            return ImageIO.read(FishBuilder.class.getResourceAsStream("res/redfish_east.png"));
+            return ImageIO.read(FishBuilder.class.getResourceAsStream("res/" + resFileName));
         }
         catch(IOException e)
         {
@@ -43,14 +60,33 @@ public class FishBuilder
 
     }
 
+    public String getRandImageKey()
+    {
+        List<String> availableKeys = new ArrayList<>(imageCache.keySet());
+        String randKey = availableKeys.get(rand.nextInt(availableKeys.size()));
+        return randKey;
+    }
+
+    public double getRandCoefficientFor(String key)
+    {
+        double randCoeff = rand.nextDouble() * 0.15 + 0.1;
+        if (key.equals("bottomfish"))
+        {
+            randCoeff *= 0.70;
+        }
+        return randCoeff;
+    }
+
     public AbstractAquariumObject createRandomFish(int maxX, int maxY)
     {
-        int x = rand.nextInt(maxX - 48);
-        int y = rand.nextInt(maxY - 48);
+        String randKey = getRandImageKey();
+        double dirCoeff = getRandCoefficientFor(randKey);
+        BufferedImage fishImage = imageCache.get(randKey);
 
-        System.out.println("New fish at (" + x + ", " + y + ")");
+        int x = rand.nextInt(maxX - fishImage.getWidth());
+        int y = rand.nextInt(maxY - fishImage.getHeight());
 
-        return new BidirectionalFish(new Point2D.Double(x, y), createTestImage(), 0.25);
+        return new BidirectionalFish(new Point2D.Double(x, y), fishImage, dirCoeff);
     }
 
 
