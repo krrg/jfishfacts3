@@ -11,7 +11,7 @@ public class SimpleGameSettings implements IGameSettings<Integer>
 {
     private boolean repeatIncorrect = false;
     private int incorrectTimeout = 2750;
-    private int tankCapacity = 6;
+    private int tankCapacity = 10;
     private int correctPerFish = 2;
     private int totalGameTime = 60;
     private Set<AbstractOperator<Integer>> allowedOperators = null;

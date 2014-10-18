@@ -36,11 +36,15 @@ public class FishBuilder
 
     private void initImages()
     {
-        imageCache.put("bigfin", tryReadImage("bigfinfish_east.png"));
-        imageCache.put("bottomfish", tryReadImage("bottomfish_east.png"));
-        imageCache.put("fish8", tryReadImage("fish8_east.png"));
-        imageCache.put("redfish", tryReadImage("redfish_east.png"));
-        imageCache.put("seahorse", tryReadImage("seahorse_east.png"));
+        imageCache.put("Fish01", tryReadImage("Fish01.png"));
+        imageCache.put("Fish02", tryReadImage("Fish02.png"));
+        imageCache.put("Fish03", tryReadImage("Fish03.png"));
+        imageCache.put("Fish04", tryReadImage("Fish04.png"));
+        imageCache.put("Fish05", tryReadImage("Fish05.png"));
+        imageCache.put("Fish06", tryReadImage("Fish06.png"));
+        imageCache.put("Fish07", tryReadImage("Fish07.png"));
+        imageCache.put("Fish08", tryReadImage("Fish08.png"));
+        imageCache.put("Fish09", tryReadImage("Fish09.png"));
     }
 
     private BufferedImage tryReadImage(String resFileName)
@@ -69,12 +73,7 @@ public class FishBuilder
 
     public double getRandCoefficientFor(String key)
     {
-        double randCoeff = rand.nextDouble() * 0.15 + 0.1;
-        if (key.equals("bottomfish"))
-        {
-            randCoeff *= 0.70;
-        }
-        return randCoeff;
+        return rand.nextDouble() * 0.15 + 0.1;
     }
 
     public AbstractAquariumObject createRandomFish(int maxX, int maxY)
