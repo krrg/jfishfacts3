@@ -6,12 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
     </content>
-    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="junit-4.11" level="project" />
     <orderEntry type="library" exported="" name="org.glassfish.jersey.containers:jersey-container-jdk-http:2.10.1" level="project" />
-    <orderEntry type="library" name="ST-4.0.8" level="project" />
-    <orderEntry type="library" name="gson-2.3" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.3.1" level="project" />
+    <orderEntry type="library" name="junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="org.antlr:stringtemplate:4.0.2" level="project" />
   </component>
 </module>
-
